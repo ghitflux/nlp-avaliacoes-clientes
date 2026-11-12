@@ -308,7 +308,7 @@ conta a história com as tabelas; para refazê-lo, `uv run python scripts/montar
 
 O corpus é o **B2W-Reviews01** (B2W Digital / Americanas), publicado em
 [github.com/americanas-tech/b2w-reviews01](https://github.com/americanas-tech/b2w-reviews01) e descrito por Real,
-Oshiro e Mafra no STIL 2019. Licença **Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 (CC BY-NC-SA
+que acompanha o repositório de origem. Licença **Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 (CC BY-NC-SA
 4.0)**: uso não comercial, com crédito à B2W Digital, e obra derivada sob a mesma licença.
 
 Este repositório não redistribui o corpus nem trechos dele. O arquivo bruto e os embeddings ficam em
