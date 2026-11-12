@@ -104,6 +104,19 @@ def test_bloco_do_site_segue_as_regras_e_cabe_em_json(resultados):
     json.dumps({"para_o_site": bloco, "achados": resumo_site.achados(resultados)}, default=float)
 
 
+def test_graficos_extras_seguem_a_especificacao_do_site(resultados):
+    extras = resumo_site.para_o_site(resultados)["graficos_extras"]
+    assert 3 <= len(extras) <= 5
+    for grafico in extras:
+        resumo_site.conferir_grafico(grafico, com_leitura=True)
+        assert set(grafico["leitura"]) == {"pt", "en", "es"} and all(len(t) <= 90 for t in grafico["titulo"].values())
+    assert [g["tipo"] for g in extras] == ["barras", "barras", "linhas", "linhas", "barras"]
+    motivos = extras[1]["series"][1]["pontos"]
+    assert sum(valor for _, valor in motivos) == pytest.approx(1.0, abs=0.01)  # as parcelas dos motivos fecham 100%
+    with pytest.raises(AssertionError):  # a conferência recusa um gráfico sem a leitura
+        resumo_site.conferir_grafico({k: v for k, v in extras[0].items() if k != "leitura"}, com_leitura=True)
+
+
 def test_formatos_por_idioma():
     assert [resumo_site._pct(0.256, i) for i in resumo_site.IDIOMAS] == ["26%", "26%", "26 %"]
     assert [resumo_site._pct(0.256, i, 1) for i in resumo_site.IDIOMAS] == ["25,6%", "25.6%", "25,6 %"]

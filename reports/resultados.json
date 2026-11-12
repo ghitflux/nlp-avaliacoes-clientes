@@ -2919,20 +2919,1074 @@
           ]
         ]
       }
-    }
+    },
+    "graficos_extras": [
+      {
+        "tipo": "barras",
+        "titulo": {
+          "pt": "O mesmo modelo vale de 0,963 a 0,989 de AUC, conforme o gabarito",
+          "en": "The same model scores 0.963 to 0.989 AUC, depending on the answer key",
+          "es": "El mismo modelo vale de 0,963 a 0,989 de AUC, según la referencia"
+        },
+        "eixo_x": {
+          "pt": "Rótulo usado como gabarito",
+          "en": "Label used as answer key",
+          "es": "Etiqueta usada como referencia"
+        },
+        "eixo_y": {
+          "pt": "AUC no teste",
+          "en": "Test AUC",
+          "es": "AUC en la prueba"
+        },
+        "formato_x": "numero",
+        "formato_y": "numero",
+        "rotulos": {
+          "pt": [
+            "Não recomendaria",
+            "Nota até 2",
+            "Só onde os dois concordam",
+            "Qualquer um dos dois"
+          ],
+          "en": [
+            "Would not recommend",
+            "Rating of 2 or less",
+            "Only where both agree",
+            "Either signal"
+          ],
+          "es": [
+            "No recomendaría",
+            "Nota de 2 o menos",
+            "Solo donde ambos coinciden",
+            "Cualquiera de los dos"
+          ]
+        },
+        "series": [
+          {
+            "nome": {
+              "pt": "Treinado com \"não recomendaria\"",
+              "en": "Trained on \"would not recommend\"",
+              "es": "Entrenado con \"no recomendaría\""
+            },
+            "papel": "principal",
+            "rotulos": {
+              "pt": [
+                "Não recomendaria",
+                "Nota até 2",
+                "Só onde os dois concordam",
+                "Qualquer um dos dois"
+              ],
+              "en": [
+                "Would not recommend",
+                "Rating of 2 or less",
+                "Only where both agree",
+                "Either signal"
+              ],
+              "es": [
+                "No recomendaría",
+                "Nota de 2 o menos",
+                "Solo donde ambos coinciden",
+                "Cualquiera de los dos"
+              ]
+            },
+            "pontos": [
+              [
+                "Não recomendaria",
+                0.9626
+              ],
+              [
+                "Nota até 2",
+                0.9799
+              ],
+              [
+                "Só onde os dois concordam",
+                0.989
+              ],
+              [
+                "Qualquer um dos dois",
+                0.9676
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Treinado com \"nota até 2\"",
+              "en": "Trained on \"rating of 2 or less\"",
+              "es": "Entrenado con \"nota de 2 o menos\""
+            },
+            "papel": "alternativa",
+            "rotulos": {
+              "pt": [
+                "Não recomendaria",
+                "Nota até 2",
+                "Só onde os dois concordam",
+                "Qualquer um dos dois"
+              ],
+              "en": [
+                "Would not recommend",
+                "Rating of 2 or less",
+                "Only where both agree",
+                "Either signal"
+              ],
+              "es": [
+                "No recomendaría",
+                "Nota de 2 o menos",
+                "Solo donde ambos coinciden",
+                "Cualquiera de los dos"
+              ]
+            },
+            "pontos": [
+              [
+                "Não recomendaria",
+                0.962
+              ],
+              [
+                "Nota até 2",
+                0.9805
+              ],
+              [
+                "Só onde os dois concordam",
+                0.989
+              ],
+              [
+                "Qualquer um dos dois",
+                0.9679
+              ]
+            ]
+          }
+        ],
+        "leitura": {
+          "pt": "A nota e o “recomendaria” discordam em 4,4% das avaliações; trocar o gabarito muda a métrica, trocar o rótulo de treino quase não muda o modelo.",
+          "en": "Star rating and “would recommend” disagree on 4.4% of reviews; swapping the answer key moves the metric, while swapping the training label barely changes the model.",
+          "es": "La nota y el “recomendaría” no coinciden en el 4,4 % de las reseñas; cambiar la referencia mueve la métrica, cambiar la etiqueta de entrenamiento casi no cambia el modelo."
+        }
+      },
+      {
+        "tipo": "barras",
+        "titulo": {
+          "pt": "O tamanho de cada motivo muda ao reaprender os temas: de 0% a 20% no extremo",
+          "en": "Reason sizes shift when topics are re-learned: from 0% to 20% at the extreme",
+          "es": "El tamaño de cada motivo cambia al reaprender los temas: del 0 % al 20 %"
+        },
+        "eixo_x": {
+          "pt": "Motivo de reclamação",
+          "en": "Complaint reason",
+          "es": "Motivo de queja"
+        },
+        "eixo_y": {
+          "pt": "Parcela das reclamações",
+          "en": "Share of complaints",
+          "es": "Parte de las quejas"
+        },
+        "formato_x": "numero",
+        "formato_y": "percentual",
+        "rotulos": {
+          "pt": [
+            "Desempenho ruim no uso",
+            "Produto não recebido",
+            "Loja e atendimento",
+            "Defeito, avaria ou item errado",
+            "Desabafo sem motivo claro",
+            "Material e acabamento ruins",
+            "Diferente do esperado ou do anunciado",
+            "Atraso e prazo de entrega"
+          ],
+          "en": [
+            "Poor performance in use",
+            "Product never arrived",
+            "Store and customer service",
+            "Defective, damaged or wrong item",
+            "Venting with no clear reason",
+            "Poor material and finish",
+            "Not as expected or advertised",
+            "Late delivery"
+          ],
+          "es": [
+            "Mal rendimiento en el uso",
+            "Producto no recibido",
+            "Tienda y atención al cliente",
+            "Defecto, daño o artículo equivocado",
+            "Desahogo sin motivo claro",
+            "Material y acabado deficientes",
+            "Distinto de lo esperado o anunciado",
+            "Retraso en la entrega"
+          ]
+        },
+        "series": [
+          {
+            "nome": {
+              "pt": "Mínimo ao reaprender os temas",
+              "en": "Low end when re-learning topics",
+              "es": "Mínimo al reaprender los temas"
+            },
+            "papel": "neutro",
+            "rotulos": {
+              "pt": [
+                "Desempenho ruim no uso",
+                "Produto não recebido",
+                "Loja e atendimento",
+                "Defeito, avaria ou item errado",
+                "Desabafo sem motivo claro",
+                "Material e acabamento ruins",
+                "Diferente do esperado ou do anunciado",
+                "Atraso e prazo de entrega"
+              ],
+              "en": [
+                "Poor performance in use",
+                "Product never arrived",
+                "Store and customer service",
+                "Defective, damaged or wrong item",
+                "Venting with no clear reason",
+                "Poor material and finish",
+                "Not as expected or advertised",
+                "Late delivery"
+              ],
+              "es": [
+                "Mal rendimiento en el uso",
+                "Producto no recibido",
+                "Tienda y atención al cliente",
+                "Defecto, daño o artículo equivocado",
+                "Desahogo sin motivo claro",
+                "Material y acabado deficientes",
+                "Distinto de lo esperado o anunciado",
+                "Retraso en la entrega"
+              ]
+            },
+            "pontos": [
+              [
+                "Desempenho ruim no uso",
+                0.1975
+              ],
+              [
+                "Produto não recebido",
+                0.0888
+              ],
+              [
+                "Loja e atendimento",
+                0.1186
+              ],
+              [
+                "Defeito, avaria ou item errado",
+                0.0876
+              ],
+              [
+                "Desabafo sem motivo claro",
+                0.0
+              ],
+              [
+                "Material e acabamento ruins",
+                0.0659
+              ],
+              [
+                "Diferente do esperado ou do anunciado",
+                0.0
+              ],
+              [
+                "Atraso e prazo de entrega",
+                0.0568
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Modelo de referência",
+              "en": "Reference model",
+              "es": "Modelo de referencia"
+            },
+            "papel": "principal",
+            "rotulos": {
+              "pt": [
+                "Desempenho ruim no uso",
+                "Produto não recebido",
+                "Loja e atendimento",
+                "Defeito, avaria ou item errado",
+                "Desabafo sem motivo claro",
+                "Material e acabamento ruins",
+                "Diferente do esperado ou do anunciado",
+                "Atraso e prazo de entrega"
+              ],
+              "en": [
+                "Poor performance in use",
+                "Product never arrived",
+                "Store and customer service",
+                "Defective, damaged or wrong item",
+                "Venting with no clear reason",
+                "Poor material and finish",
+                "Not as expected or advertised",
+                "Late delivery"
+              ],
+              "es": [
+                "Mal rendimiento en el uso",
+                "Producto no recibido",
+                "Tienda y atención al cliente",
+                "Defecto, daño o artículo equivocado",
+                "Desahogo sin motivo claro",
+                "Material y acabado deficientes",
+                "Distinto de lo esperado o anunciado",
+                "Retraso en la entrega"
+              ]
+            },
+            "pontos": [
+              [
+                "Desempenho ruim no uso",
+                0.3045
+              ],
+              [
+                "Produto não recebido",
+                0.1423
+              ],
+              [
+                "Loja e atendimento",
+                0.1417
+              ],
+              [
+                "Defeito, avaria ou item errado",
+                0.1124
+              ],
+              [
+                "Desabafo sem motivo claro",
+                0.0949
+              ],
+              [
+                "Material e acabamento ruins",
+                0.0773
+              ],
+              [
+                "Diferente do esperado ou do anunciado",
+                0.0695
+              ],
+              [
+                "Atraso e prazo de entrega",
+                0.0573
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Máximo ao reaprender os temas",
+              "en": "High end when re-learning topics",
+              "es": "Máximo al reaprender los temas"
+            },
+            "papel": "neutro",
+            "rotulos": {
+              "pt": [
+                "Desempenho ruim no uso",
+                "Produto não recebido",
+                "Loja e atendimento",
+                "Defeito, avaria ou item errado",
+                "Desabafo sem motivo claro",
+                "Material e acabamento ruins",
+                "Diferente do esperado ou do anunciado",
+                "Atraso e prazo de entrega"
+              ],
+              "en": [
+                "Poor performance in use",
+                "Product never arrived",
+                "Store and customer service",
+                "Defective, damaged or wrong item",
+                "Venting with no clear reason",
+                "Poor material and finish",
+                "Not as expected or advertised",
+                "Late delivery"
+              ],
+              "es": [
+                "Mal rendimiento en el uso",
+                "Producto no recibido",
+                "Tienda y atención al cliente",
+                "Defecto, daño o artículo equivocado",
+                "Desahogo sin motivo claro",
+                "Material y acabado deficientes",
+                "Distinto de lo esperado o anunciado",
+                "Retraso en la entrega"
+              ]
+            },
+            "pontos": [
+              [
+                "Desempenho ruim no uso",
+                0.3181
+              ],
+              [
+                "Produto não recebido",
+                0.1447
+              ],
+              [
+                "Loja e atendimento",
+                0.2364
+              ],
+              [
+                "Defeito, avaria ou item errado",
+                0.1814
+              ],
+              [
+                "Desabafo sem motivo claro",
+                0.1346
+              ],
+              [
+                "Material e acabamento ruins",
+                0.0914
+              ],
+              [
+                "Diferente do esperado ou do anunciado",
+                0.1972
+              ],
+              [
+                "Atraso e prazo de entrega",
+                0.1125
+              ]
+            ]
+          }
+        ],
+        "leitura": {
+          "pt": "Parcela das reclamações de maio por motivo, com o intervalo de 95% obtido reaprendendo os temas: os motivos se repetem, o tamanho deles não; use como mapa, não como meta.",
+          "en": "Share of May complaints by reason, with the 95% range from re-learning the topics: the reasons recur but their sizes don't, so treat them as a map, not a target.",
+          "es": "Parte de las quejas de mayo por motivo, con el intervalo del 95 % al reaprender los temas: los motivos se repiten, su tamaño no; úselos como mapa, no como meta."
+        }
+      },
+      {
+        "tipo": "linhas",
+        "titulo": {
+          "pt": "Os temas mudam a cada execução: estabilidade de 0,57 a 0,70",
+          "en": "Topics change from run to run: stability between 0.57 and 0.70",
+          "es": "Los temas cambian en cada ejecución: estabilidad de 0,57 a 0,70"
+        },
+        "eixo_x": {
+          "pt": "Número de temas",
+          "en": "Number of topics",
+          "es": "Número de temas"
+        },
+        "eixo_y": {
+          "pt": "Estabilidade (1 = mesmos temas sempre)",
+          "en": "Stability (1 = same topics every time)",
+          "es": "Estabilidad (1 = mismos temas siempre)"
+        },
+        "formato_x": "numero",
+        "formato_y": "numero",
+        "series": [
+          {
+            "nome": {
+              "pt": "NMF sobre TF-IDF",
+              "en": "NMF on TF-IDF",
+              "es": "NMF sobre TF-IDF"
+            },
+            "papel": "principal",
+            "pontos": [
+              [
+                4,
+                0.6743
+              ],
+              [
+                6,
+                0.5952
+              ],
+              [
+                8,
+                0.7038
+              ],
+              [
+                10,
+                0.6172
+              ],
+              [
+                12,
+                0.5711
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "k-means sobre MiniLM (amostra)",
+              "en": "k-means on MiniLM (sample)",
+              "es": "k-means sobre MiniLM (muestra)"
+            },
+            "papel": "alternativa",
+            "pontos": [
+              [
+                10,
+                0.4238
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "k-means sobre LSA (amostra)",
+              "en": "k-means on LSA (sample)",
+              "es": "k-means sobre LSA (muestra)"
+            },
+            "papel": "neutro",
+            "pontos": [
+              [
+                10,
+                0.4225
+              ]
+            ]
+          }
+        ],
+        "faixa": {
+          "serie": 0,
+          "inferior": [
+            [
+              4,
+              0.3846
+            ],
+            [
+              6,
+              0.3807
+            ],
+            [
+              8,
+              0.6307
+            ],
+            [
+              10,
+              0.4837
+            ],
+            [
+              12,
+              0.497
+            ]
+          ],
+          "superior": [
+            [
+              4,
+              0.9091
+            ],
+            [
+              6,
+              0.8535
+            ],
+            [
+              8,
+              0.8674
+            ],
+            [
+              10,
+              0.8091
+            ],
+            [
+              12,
+              0.7721
+            ]
+          ]
+        },
+        "leitura": {
+          "pt": "Quanto das palavras de cada tema se repete entre duas execuções (outra semente e outra subamostra); com os 10 temas adotados, 0,62, e o agrupamento sobre a representação densa é menos estável.",
+          "en": "How much of each topic's vocabulary repeats between two runs (new seed, new subsample); with the 10 topics adopted it is 0.62, and clustering dense embeddings is less stable.",
+          "es": "Cuánto del vocabulario de cada tema se repite entre dos ejecuciones (otra semilla y otra submuestra); con los 10 temas adoptados es 0,62, y agrupar la representación densa es menos estable."
+        }
+      },
+      {
+        "tipo": "linhas",
+        "titulo": {
+          "pt": "Recalibrar reduz o erro de calibração de 0,033 para 0,021",
+          "en": "Recalibration cuts the calibration error from 0.033 to 0.021",
+          "es": "Recalibrar reduce el error de calibración de 0,033 a 0,021"
+        },
+        "eixo_x": {
+          "pt": "Probabilidade prevista de reclamação",
+          "en": "Predicted probability of complaint",
+          "es": "Probabilidad prevista de queja"
+        },
+        "eixo_y": {
+          "pt": "Parcela que era reclamação",
+          "en": "Share that were complaints",
+          "es": "Parte que eran quejas"
+        },
+        "formato_x": "percentual",
+        "formato_y": "percentual",
+        "series": [
+          {
+            "nome": {
+              "pt": "Recalibrada (Platt, ajustada em abril)",
+              "en": "Recalibrated (Platt, fitted on April)",
+              "es": "Recalibrada (Platt, ajustada en abril)"
+            },
+            "papel": "principal",
+            "pontos": [
+              [
+                0.0005,
+                0.0115
+              ],
+              [
+                0.002,
+                0.0123
+              ],
+              [
+                0.0052,
+                0.0148
+              ],
+              [
+                0.0117,
+                0.0111
+              ],
+              [
+                0.0259,
+                0.0206
+              ],
+              [
+                0.0657,
+                0.0362
+              ],
+              [
+                0.2205,
+                0.1765
+              ],
+              [
+                0.6159,
+                0.6837
+              ],
+              [
+                0.8823,
+                0.9005
+              ],
+              [
+                0.9741,
+                0.9584
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Probabilidade bruta do modelo",
+              "en": "Raw model probability",
+              "es": "Probabilidad bruta del modelo"
+            },
+            "papel": "base",
+            "pontos": [
+              [
+                0.0014,
+                0.0115
+              ],
+              [
+                0.0053,
+                0.0123
+              ],
+              [
+                0.0116,
+                0.0148
+              ],
+              [
+                0.0228,
+                0.0111
+              ],
+              [
+                0.0441,
+                0.0206
+              ],
+              [
+                0.0945,
+                0.0362
+              ],
+              [
+                0.251,
+                0.1765
+              ],
+              [
+                0.596,
+                0.6837
+              ],
+              [
+                0.8446,
+                0.9005
+              ],
+              [
+                0.9559,
+                0.9584
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Calibração perfeita",
+              "en": "Perfect calibration",
+              "es": "Calibración perfecta"
+            },
+            "papel": "neutro",
+            "pontos": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "leitura": {
+          "pt": "Cada ponto é um décimo das avaliações de maio: quanto mais perto da diagonal, mais a probabilidade prometida se cumpre; a recalibração melhora, mas não zera o erro.",
+          "en": "Each point is a tenth of the May reviews: the closer to the diagonal, the more the promised probability comes true; recalibration helps but does not remove the error.",
+          "es": "Cada punto es una décima parte de las reseñas de mayo: cuanto más cerca de la diagonal, más se cumple la probabilidad prometida; recalibrar mejora, pero no elimina el error."
+        }
+      },
+      {
+        "tipo": "barras",
+        "titulo": {
+          "pt": "“Desempenho ruim no uso” vai de 16% a 40% das reclamações, conforme o produto",
+          "en": "“Poor performance in use” ranges from 16% to 40% of complaints by product",
+          "es": "“Mal rendimiento en el uso” va del 16 % al 40 % de las quejas según el producto"
+        },
+        "eixo_x": {
+          "pt": "Categoria de produto",
+          "en": "Product category",
+          "es": "Categoría de producto"
+        },
+        "eixo_y": {
+          "pt": "Parcela das reclamações da categoria",
+          "en": "Share of the category's complaints",
+          "es": "Parte de las quejas de la categoría"
+        },
+        "formato_x": "numero",
+        "formato_y": "percentual",
+        "rotulos": {
+          "pt": [
+            "Celulares e Smartphones",
+            "Móveis",
+            "Informática e Acessórios",
+            "Beleza e Perfumaria",
+            "Utilidades Domésticas",
+            "Eletroportáteis",
+            "Casa e Construção",
+            "TV e Home Theater"
+          ],
+          "en": [
+            "Mobile phones",
+            "Furniture",
+            "Computers and accessories",
+            "Beauty and fragrance",
+            "Housewares",
+            "Small appliances",
+            "Home improvement",
+            "TV and home theater"
+          ],
+          "es": [
+            "Celulares y smartphones",
+            "Muebles",
+            "Informática y accesorios",
+            "Belleza y perfumería",
+            "Artículos para el hogar",
+            "Pequeños electrodomésticos",
+            "Casa y construcción",
+            "TV y home theater"
+          ]
+        },
+        "series": [
+          {
+            "nome": {
+              "pt": "Desempenho ruim no uso",
+              "en": "Poor performance in use",
+              "es": "Mal rendimiento en el uso"
+            },
+            "papel": "principal",
+            "rotulos": {
+              "pt": [
+                "Celulares e Smartphones",
+                "Móveis",
+                "Informática e Acessórios",
+                "Beleza e Perfumaria",
+                "Utilidades Domésticas",
+                "Eletroportáteis",
+                "Casa e Construção",
+                "TV e Home Theater"
+              ],
+              "en": [
+                "Mobile phones",
+                "Furniture",
+                "Computers and accessories",
+                "Beauty and fragrance",
+                "Housewares",
+                "Small appliances",
+                "Home improvement",
+                "TV and home theater"
+              ],
+              "es": [
+                "Celulares y smartphones",
+                "Muebles",
+                "Informática y accesorios",
+                "Belleza y perfumería",
+                "Artículos para el hogar",
+                "Pequeños electrodomésticos",
+                "Casa y construcción",
+                "TV y home theater"
+              ]
+            },
+            "pontos": [
+              [
+                "Celulares e Smartphones",
+                0.3743
+              ],
+              [
+                "Móveis",
+                0.1597
+              ],
+              [
+                "Informática e Acessórios",
+                0.328
+              ],
+              [
+                "Beleza e Perfumaria",
+                0.2912
+              ],
+              [
+                "Utilidades Domésticas",
+                0.2836
+              ],
+              [
+                "Eletroportáteis",
+                0.3515
+              ],
+              [
+                "Casa e Construção",
+                0.2845
+              ],
+              [
+                "TV e Home Theater",
+                0.3982
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Produto não recebido",
+              "en": "Product never arrived",
+              "es": "Producto no recibido"
+            },
+            "papel": "base",
+            "rotulos": {
+              "pt": [
+                "Celulares e Smartphones",
+                "Móveis",
+                "Informática e Acessórios",
+                "Beleza e Perfumaria",
+                "Utilidades Domésticas",
+                "Eletroportáteis",
+                "Casa e Construção",
+                "TV e Home Theater"
+              ],
+              "en": [
+                "Mobile phones",
+                "Furniture",
+                "Computers and accessories",
+                "Beauty and fragrance",
+                "Housewares",
+                "Small appliances",
+                "Home improvement",
+                "TV and home theater"
+              ],
+              "es": [
+                "Celulares y smartphones",
+                "Muebles",
+                "Informática y accesorios",
+                "Belleza y perfumería",
+                "Artículos para el hogar",
+                "Pequeños electrodomésticos",
+                "Casa y construcción",
+                "TV y home theater"
+              ]
+            },
+            "pontos": [
+              [
+                "Celulares e Smartphones",
+                0.1445
+              ],
+              [
+                "Móveis",
+                0.199
+              ],
+              [
+                "Informática e Acessórios",
+                0.1897
+              ],
+              [
+                "Beleza e Perfumaria",
+                0.1649
+              ],
+              [
+                "Utilidades Domésticas",
+                0.1359
+              ],
+              [
+                "Eletroportáteis",
+                0.1015
+              ],
+              [
+                "Casa e Construção",
+                0.2023
+              ],
+              [
+                "TV e Home Theater",
+                0.1133
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Loja e atendimento",
+              "en": "Store and customer service",
+              "es": "Tienda y atención al cliente"
+            },
+            "papel": "alternativa",
+            "rotulos": {
+              "pt": [
+                "Celulares e Smartphones",
+                "Móveis",
+                "Informática e Acessórios",
+                "Beleza e Perfumaria",
+                "Utilidades Domésticas",
+                "Eletroportáteis",
+                "Casa e Construção",
+                "TV e Home Theater"
+              ],
+              "en": [
+                "Mobile phones",
+                "Furniture",
+                "Computers and accessories",
+                "Beauty and fragrance",
+                "Housewares",
+                "Small appliances",
+                "Home improvement",
+                "TV and home theater"
+              ],
+              "es": [
+                "Celulares y smartphones",
+                "Muebles",
+                "Informática y accesorios",
+                "Belleza y perfumería",
+                "Artículos para el hogar",
+                "Pequeños electrodomésticos",
+                "Casa y construcción",
+                "TV y home theater"
+              ]
+            },
+            "pontos": [
+              [
+                "Celulares e Smartphones",
+                0.1326
+              ],
+              [
+                "Móveis",
+                0.1632
+              ],
+              [
+                "Informática e Acessórios",
+                0.1312
+              ],
+              [
+                "Beleza e Perfumaria",
+                0.1396
+              ],
+              [
+                "Utilidades Domésticas",
+                0.1016
+              ],
+              [
+                "Eletroportáteis",
+                0.1279
+              ],
+              [
+                "Casa e Construção",
+                0.1382
+              ],
+              [
+                "TV e Home Theater",
+                0.1097
+              ]
+            ]
+          },
+          {
+            "nome": {
+              "pt": "Defeito, avaria ou item errado",
+              "en": "Defective, damaged or wrong item",
+              "es": "Defecto, daño o artículo equivocado"
+            },
+            "papel": "neutro",
+            "rotulos": {
+              "pt": [
+                "Celulares e Smartphones",
+                "Móveis",
+                "Informática e Acessórios",
+                "Beleza e Perfumaria",
+                "Utilidades Domésticas",
+                "Eletroportáteis",
+                "Casa e Construção",
+                "TV e Home Theater"
+              ],
+              "en": [
+                "Mobile phones",
+                "Furniture",
+                "Computers and accessories",
+                "Beauty and fragrance",
+                "Housewares",
+                "Small appliances",
+                "Home improvement",
+                "TV and home theater"
+              ],
+              "es": [
+                "Celulares y smartphones",
+                "Muebles",
+                "Informática y accesorios",
+                "Belleza y perfumería",
+                "Artículos para el hogar",
+                "Pequeños electrodomésticos",
+                "Casa y construcción",
+                "TV y home theater"
+              ]
+            },
+            "pontos": [
+              [
+                "Celulares e Smartphones",
+                0.1011
+              ],
+              [
+                "Móveis",
+                0.1204
+              ],
+              [
+                "Informática e Acessórios",
+                0.1181
+              ],
+              [
+                "Beleza e Perfumaria",
+                0.0999
+              ],
+              [
+                "Utilidades Domésticas",
+                0.1187
+              ],
+              [
+                "Eletroportáteis",
+                0.125
+              ],
+              [
+                "Casa e Construção",
+                0.1053
+              ],
+              [
+                "TV e Home Theater",
+                0.1097
+              ]
+            ]
+          }
+        ],
+        "leitura": {
+          "pt": "Os quatro maiores motivos dentro de cada categoria (abril e maio): móvel reclama mais de logística, eletrônico mais de desempenho; só diferenças grandes superam a incerteza dos temas.",
+          "en": "The four largest reasons within each category (April and May): furniture complaints lean toward logistics, electronics toward performance; only large gaps exceed the topic uncertainty.",
+          "es": "Los cuatro motivos principales dentro de cada categoría (abril y mayo): los muebles se quejan más de la logística y la electrónica del rendimiento; solo las diferencias grandes superan la incertidumbre de los temas."
+        }
+      }
+    ]
   },
   "tempos_em_segundos": {
-    "base e rótulos": 0.6,
-    "TF-IDF de palavras": 11.2,
-    "TF-IDF de caracteres": 27.0,
-    "regressões logísticas": 30.8,
-    "desempenho do alerta com bootstrap": 15.6,
-    "ruído de rótulo": 15.4,
-    "calibração e análise de erro": 7.4,
-    "estabilidade por número de temas": 16.3,
-    "temas de referência e tamanho dos motivos": 16.3,
-    "classificadores na amostra (esparso x denso)": 10.4,
-    "agrupamentos na amostra (NMF x k-means)": 5.0,
-    "total": 165
+    "base e rótulos": 0.7,
+    "TF-IDF de palavras": 21.8,
+    "TF-IDF de caracteres": 45.8,
+    "regressões logísticas": 62.0,
+    "desempenho do alerta com bootstrap": 30.1,
+    "ruído de rótulo": 26.4,
+    "calibração e análise de erro": 11.1,
+    "estabilidade por número de temas": 23.9,
+    "temas de referência e tamanho dos motivos": 20.0,
+    "classificadores na amostra (esparso x denso)": 14.6,
+    "agrupamentos na amostra (NMF x k-means)": 32.5,
+    "total": 308
   }
 }

@@ -211,7 +211,265 @@ def para_o_site(r: pipeline.Resultados) -> dict:
             ],
             "faixa": {"serie": 0, "inferior": pontos(f"{pipeline.PALAVRAS} inf"), "superior": pontos(f"{pipeline.PALAVRAS} sup")},
         },
+        "graficos_extras": graficos_extras(r),
     }
+
+
+# ---------------------------------------------------------------------------------------------
+# Gráficos extras: o equivalente em dados das figuras do README que não são o gráfico principal
+# ---------------------------------------------------------------------------------------------
+
+GABARITOS = {
+    "não recomendaria": {"pt": "Não recomendaria", "en": "Would not recommend", "es": "No recomendaría"},
+    "nota até 2": {"pt": "Nota até 2", "en": "Rating of 2 or less", "es": "Nota de 2 o menos"},
+    "só onde os dois concordam": {"pt": "Só onde os dois concordam", "en": "Only where both agree", "es": "Solo donde ambos coinciden"},
+    "qualquer um dos dois sinais": {"pt": "Qualquer um dos dois", "en": "Either signal", "es": "Cualquiera de los dos"},
+}
+CATEGORIAS_TRADUZIDAS = {
+    "Celulares e Smartphones": {"en": "Mobile phones", "es": "Celulares y smartphones"},
+    "Móveis": {"en": "Furniture", "es": "Muebles"},
+    "Informática e Acessórios": {"en": "Computers and accessories", "es": "Informática y accesorios"},
+    "Beleza e Perfumaria": {"en": "Beauty and fragrance", "es": "Belleza y perfumería"},
+    "Utilidades Domésticas": {"en": "Housewares", "es": "Artículos para el hogar"},
+    "Eletroportáteis": {"en": "Small appliances", "es": "Pequeños electrodomésticos"},
+    "Casa e Construção": {"en": "Home improvement", "es": "Casa y construcción"},
+    "TV e Home Theater": {"en": "TV and home theater", "es": "TV y home theater"},
+    "Eletrodomésticos": {"en": "Home appliances", "es": "Electrodomésticos"},
+    "Brinquedos": {"en": "Toys", "es": "Juguetes"},
+    "Informática": {"en": "Computers", "es": "Informática"},
+    "Livros": {"en": "Books", "es": "Libros"},
+}
+
+
+def _traduzir_categoria(nome: str) -> dict:
+    """Nome da categoria nos três idiomas (sem tradução cadastrada, fica o nome original)."""
+    return {"pt": nome, **{i: CATEGORIAS_TRADUZIDAS.get(nome, {}).get(i, nome) for i in ("en", "es")}}
+
+
+def graficos_extras(r: pipeline.Resultados) -> list[dict]:
+    """Cinco gráficos, do achado mais importante para o menos: ruído de rótulo, tamanho dos motivos,
+    estabilidade dos temas, calibração e mistura de motivos por categoria."""
+
+    def p(valor: float, casas: int = 0) -> dict:
+        return {i: _pct(valor, i, casas) for i in IDIOMAS}
+
+    def n(valor: float, casas: int = 2) -> dict:
+        return {i: _num(valor, i, casas) for i in IDIOMAS}
+
+    def r4(valor: float) -> float:
+        return round(float(valor), 4)
+
+    extras = []
+
+    # 1. AUC do mesmo modelo conforme o gabarito (figura auc_por_rotulo.png)
+    por_rotulo = r.auc_por_rotulo
+    gabaritos = list(GABARITOS)
+    rotulos = {i: [GABARITOS[g][i] for g in gabaritos] for i in IDIOMAS}
+    series = []
+    for treinado, papel, nome in (
+        ('"não recomendaria"', "principal", {"pt": 'Treinado com "não recomendaria"', "en": 'Trained on "would not recommend"', "es": 'Entrenado con "no recomendaría"'}),
+        ('"nota até 2"', "alternativa", {"pt": 'Treinado com "nota até 2"', "en": 'Trained on "rating of 2 or less"', "es": 'Entrenado con "nota de 2 o menos"'}),
+    ):
+        series.append({"nome": nome, "papel": papel, "rotulos": rotulos, "pontos": [[rotulos["pt"][k], r4(por_rotulo.loc[(treinado, g), "AUC"])] for k, g in enumerate(gabaritos)]})
+    menor, maior = n(por_rotulo.loc['"não recomendaria"', "AUC"].min(), 3), n(por_rotulo.loc['"não recomendaria"', "AUC"].max(), 3)
+    discordam = p(r.discordancia["rotulos_discordam"]["parcela"], 1)
+    extras.append(
+        {
+            "tipo": "barras",
+            "titulo": {
+                "pt": f"O mesmo modelo vale de {menor['pt']} a {maior['pt']} de AUC, conforme o gabarito",
+                "en": f"The same model scores {menor['en']} to {maior['en']} AUC, depending on the answer key",
+                "es": f"El mismo modelo vale de {menor['es']} a {maior['es']} de AUC, según la referencia",
+            },
+            "eixo_x": {"pt": "Rótulo usado como gabarito", "en": "Label used as answer key", "es": "Etiqueta usada como referencia"},
+            "eixo_y": {"pt": "AUC no teste", "en": "Test AUC", "es": "AUC en la prueba"},
+            "formato_x": "numero",
+            "formato_y": "numero",
+            "rotulos": rotulos,
+            "series": series,
+            "leitura": {
+                "pt": f"A nota e o “recomendaria” discordam em {discordam['pt']} das avaliações; trocar o gabarito muda a métrica, trocar o rótulo de treino quase não muda o modelo.",
+                "en": f"Star rating and “would recommend” disagree on {discordam['en']} of reviews; swapping the answer key moves the metric, while swapping the training label barely changes the model.",
+                "es": f"La nota y el “recomendaría” no coinciden en el {discordam['es']} de las reseñas; cambiar la referencia mueve la métrica, cambiar la etiqueta de entrenamiento casi no cambia el modelo.",
+            },
+        }
+    )
+
+    # 2. Tamanho de cada motivo (figura motivos.png)
+    motivos = r.motivos[(r.motivos["temas"] > 0) | (r.motivos["maior entre execuções"] > 0.005)].sort_values("parcela", ascending=False)
+    nomes = list(motivos.index)
+    rotulos = {i: [MOTIVOS_TRADUZIDOS[m][i] for m in nomes] for i in IDIOMAS}
+    amplitude = motivos["reajuste sup"] - motivos["reajuste inf"]
+    instavel = amplitude.idxmax()
+    baixo, alto = p(motivos.loc[instavel, "reajuste inf"]), p(motivos.loc[instavel, "reajuste sup"])
+    extras.append(
+        {
+            "tipo": "barras",
+            "titulo": {
+                "pt": f"O tamanho de cada motivo muda ao reaprender os temas: de {baixo['pt']} a {alto['pt']} no extremo",
+                "en": f"Reason sizes shift when topics are re-learned: from {baixo['en']} to {alto['en']} at the extreme",
+                "es": f"El tamaño de cada motivo cambia al reaprender los temas: del {baixo['es']} al {alto['es']}",
+            },
+            "eixo_x": {"pt": "Motivo de reclamação", "en": "Complaint reason", "es": "Motivo de queja"},
+            "eixo_y": {"pt": "Parcela das reclamações", "en": "Share of complaints", "es": "Parte de las quejas"},
+            "formato_x": "numero",
+            "formato_y": "percentual",
+            "rotulos": rotulos,
+            "series": [
+                {"nome": {"pt": "Mínimo ao reaprender os temas", "en": "Low end when re-learning topics", "es": "Mínimo al reaprender los temas"},
+                 "papel": "neutro", "rotulos": rotulos, "pontos": [[rotulos["pt"][k], r4(motivos.loc[m, "reajuste inf"])] for k, m in enumerate(nomes)]},
+                {"nome": {"pt": "Modelo de referência", "en": "Reference model", "es": "Modelo de referencia"},
+                 "papel": "principal", "rotulos": rotulos, "pontos": [[rotulos["pt"][k], r4(motivos.loc[m, "parcela"])] for k, m in enumerate(nomes)]},
+                {"nome": {"pt": "Máximo ao reaprender os temas", "en": "High end when re-learning topics", "es": "Máximo al reaprender los temas"},
+                 "papel": "neutro", "rotulos": rotulos, "pontos": [[rotulos["pt"][k], r4(motivos.loc[m, "reajuste sup"])] for k, m in enumerate(nomes)]},
+            ],
+            "leitura": {
+                "pt": "Parcela das reclamações de maio por motivo, com o intervalo de 95% obtido reaprendendo os temas: os motivos se repetem, o tamanho deles não; use como mapa, não como meta.",
+                "en": "Share of May complaints by reason, with the 95% range from re-learning the topics: the reasons recur but their sizes don't, so treat them as a map, not a target.",
+                "es": "Parte de las quejas de mayo por motivo, con el intervalo del 95 % al reaprender los temas: los motivos se repiten, su tamaño no; úselos como mapa, no como meta.",
+            },
+        }
+    )
+
+    # 3. Estabilidade dos temas por número de temas (figura estabilidade_dos_temas.png)
+    estabilidade = r.estabilidade
+    x = [int(k) for k in estabilidade.index]
+    series = [
+        {"nome": {"pt": "NMF sobre TF-IDF", "en": "NMF on TF-IDF", "es": "NMF sobre TF-IDF"}, "papel": "principal",
+         "pontos": [[k, r4(v)] for k, v in zip(x, estabilidade["estabilidade"])]},
+    ]
+    nomes_kmeans = {
+        pipeline.KMEANS_MINILM: {"pt": "k-means sobre MiniLM (amostra)", "en": "k-means on MiniLM (sample)", "es": "k-means sobre MiniLM (muestra)"},
+        pipeline.KMEANS_LSA: {"pt": "k-means sobre LSA (amostra)", "en": "k-means on LSA (sample)", "es": "k-means sobre LSA (muestra)"},
+    }
+    for (nome, valor), papel in zip(estabilidade_dos_agrupamentos(r).items(), ("alternativa", "neutro")):
+        series.append({"nome": nomes_kmeans[nome], "papel": papel, "pontos": [[int(r.numero_de_temas), r4(valor)]]})
+    lo, hi = n(estabilidade["estabilidade"].min()), n(estabilidade["estabilidade"].max())
+    adotada = n(r.estabilidade_do_modelo["estabilidade"])
+    extras.append(
+        {
+            "tipo": "linhas",
+            "titulo": {
+                "pt": f"Os temas mudam a cada execução: estabilidade de {lo['pt']} a {hi['pt']}",
+                "en": f"Topics change from run to run: stability between {lo['en']} and {hi['en']}",
+                "es": f"Los temas cambian en cada ejecución: estabilidad de {lo['es']} a {hi['es']}",
+            },
+            "eixo_x": {"pt": "Número de temas", "en": "Number of topics", "es": "Número de temas"},
+            "eixo_y": {"pt": "Estabilidade (1 = mesmos temas sempre)", "en": "Stability (1 = same topics every time)", "es": "Estabilidad (1 = mismos temas siempre)"},
+            "formato_x": "numero",
+            "formato_y": "numero",
+            "series": series,
+            "faixa": {
+                "serie": 0,
+                "inferior": [[k, r4(v)] for k, v in zip(x, estabilidade["mínimo"])],
+                "superior": [[k, r4(v)] for k, v in zip(x, estabilidade["máximo"])],
+            },
+            "leitura": {
+                "pt": f"Quanto das palavras de cada tema se repete entre duas execuções (outra semente e outra subamostra); com os {r.numero_de_temas} temas adotados, {adotada['pt']}, e o agrupamento sobre a representação densa é menos estável.",
+                "en": f"How much of each topic's vocabulary repeats between two runs (new seed, new subsample); with the {r.numero_de_temas} topics adopted it is {adotada['en']}, and clustering dense embeddings is less stable.",
+                "es": f"Cuánto del vocabulario de cada tema se repite entre dos ejecuciones (otra semilla y otra submuestra); con los {r.numero_de_temas} temas adoptados es {adotada['es']}, y agrupar la representación densa es menos estable.",
+            },
+        }
+    )
+
+    # 4. Calibração (figura calibracao.png)
+    curvas = r.curvas_de_calibracao
+    bruta, recalibrada = curvas[curvas["versão"] == "bruta"], curvas[curvas["versão"] == "recalibrada"]
+    erro_b, erro_r = n(r.calibracao["bruta"]["erro_de_calibracao"], 3), n(r.calibracao["recalibrada"]["erro_de_calibracao"], 3)
+    extras.append(
+        {
+            "tipo": "linhas",
+            "titulo": {
+                "pt": f"Recalibrar reduz o erro de calibração de {erro_b['pt']} para {erro_r['pt']}",
+                "en": f"Recalibration cuts the calibration error from {erro_b['en']} to {erro_r['en']}",
+                "es": f"Recalibrar reduce el error de calibración de {erro_b['es']} a {erro_r['es']}",
+            },
+            "eixo_x": {"pt": "Probabilidade prevista de reclamação", "en": "Predicted probability of complaint", "es": "Probabilidad prevista de queja"},
+            "eixo_y": {"pt": "Parcela que era reclamação", "en": "Share that were complaints", "es": "Parte que eran quejas"},
+            "formato_x": "percentual",
+            "formato_y": "percentual",
+            "series": [
+                {"nome": {"pt": "Recalibrada (Platt, ajustada em abril)", "en": "Recalibrated (Platt, fitted on April)", "es": "Recalibrada (Platt, ajustada en abril)"},
+                 "papel": "principal", "pontos": [[r4(a_), r4(b_)] for a_, b_ in zip(recalibrada["prevista"], recalibrada["observada"])]},
+                {"nome": {"pt": "Probabilidade bruta do modelo", "en": "Raw model probability", "es": "Probabilidad bruta del modelo"},
+                 "papel": "base", "pontos": [[r4(a_), r4(b_)] for a_, b_ in zip(bruta["prevista"], bruta["observada"])]},
+                {"nome": {"pt": "Calibração perfeita", "en": "Perfect calibration", "es": "Calibración perfecta"}, "papel": "neutro", "pontos": [[0.0, 0.0], [1.0, 1.0]]},
+            ],
+            "leitura": {
+                "pt": "Cada ponto é um décimo das avaliações de maio: quanto mais perto da diagonal, mais a probabilidade prometida se cumpre; a recalibração melhora, mas não zera o erro.",
+                "en": "Each point is a tenth of the May reviews: the closer to the diagonal, the more the promised probability comes true; recalibration helps but does not remove the error.",
+                "es": "Cada punto es una décima parte de las reseñas de mayo: cuanto más cerca de la diagonal, más se cumple la probabilidad prometida; recalibrar mejora, pero no elimina el error.",
+            },
+        }
+    )
+
+    # 5. Mistura de motivos por categoria (figura motivos_por_categoria.png, um mapa de calor; aqui, os 4 maiores motivos)
+    por_categoria = r.por_categoria
+    quatro = list(r.motivos["parcela"].drop(index=OUTROS_NOME).sort_values(ascending=False).index[:4])
+    categorias = list(por_categoria.index)
+    rotulos = {i: [_traduzir_categoria(c)[i] for c in categorias] for i in IDIOMAS}
+    papeis = ("principal", "base", "alternativa", "neutro")
+    series = [
+        {"nome": MOTIVOS_TRADUZIDOS[m], "papel": papel, "rotulos": rotulos, "pontos": [[rotulos["pt"][k], r4(por_categoria.loc[c, m])] for k, c in enumerate(categorias)]}
+        for m, papel in zip(quatro, papeis)
+    ]
+    maior = MOTIVOS_TRADUZIDOS[quatro[0]]
+    do_maior = por_categoria[quatro[0]]
+    piso, teto = p(do_maior.min()), p(do_maior.max())
+    extras.append(
+        {
+            "tipo": "barras",
+            "titulo": {
+                "pt": f"“{maior['pt']}” vai de {piso['pt']} a {teto['pt']} das reclamações, conforme o produto",
+                "en": f"“{maior['en']}” ranges from {piso['en']} to {teto['en']} of complaints by product",
+                "es": f"“{maior['es']}” va del {piso['es']} al {teto['es']} de las quejas según el producto",
+            },
+            "eixo_x": {"pt": "Categoria de produto", "en": "Product category", "es": "Categoría de producto"},
+            "eixo_y": {"pt": "Parcela das reclamações da categoria", "en": "Share of the category's complaints", "es": "Parte de las quejas de la categoría"},
+            "formato_x": "numero",
+            "formato_y": "percentual",
+            "rotulos": rotulos,
+            "series": series,
+            "leitura": {
+                "pt": "Os quatro maiores motivos dentro de cada categoria (abril e maio): móvel reclama mais de logística, eletrônico mais de desempenho; só diferenças grandes superam a incerteza dos temas.",
+                "en": "The four largest reasons within each category (April and May): furniture complaints lean toward logistics, electronics toward performance; only large gaps exceed the topic uncertainty.",
+                "es": "Los cuatro motivos principales dentro de cada categoría (abril y mayo): los muebles se quejan más de la logística y la electrónica del rendimiento; solo las diferencias grandes superan la incertidumbre de los temas.",
+            },
+        }
+    )
+    return extras
+
+
+OUTROS_NOME = analise.OUTROS
+TIPOS = ("linhas", "barras", "pontos")
+PAPEIS = ("principal", "base", "alternativa", "neutro")
+
+
+def conferir_grafico(grafico: dict, com_leitura: bool) -> None:
+    """Forma de uma especificação de gráfico do site (tipos, limites, três idiomas)."""
+    assert grafico["tipo"] in TIPOS
+    campos = ["titulo", "eixo_x", "eixo_y"] + (["leitura"] if com_leitura else [])
+    for campo in campos:
+        assert campo in grafico, f"falta o campo {campo}"
+        assert set(grafico[campo]) == set(IDIOMAS) and all(grafico[campo][i].strip() for i in IDIOMAS), campo
+    if com_leitura:
+        assert all(len(t) <= 90 for t in grafico["titulo"].values()), grafico["titulo"]
+    assert 1 <= len(grafico["series"]) <= 4
+    limite = 300 if grafico["tipo"] == "pontos" else 80
+    for serie in grafico["series"]:
+        assert serie["papel"] in PAPEIS and set(serie["nome"]) == set(IDIOMAS)
+        assert 1 <= len(serie["pontos"]) <= limite
+        if grafico["tipo"] == "barras":
+            assert all(isinstance(rotulo, str) and np.isfinite(valor) for rotulo, valor in serie["pontos"])
+            if "rotulos" in serie:
+                assert set(serie["rotulos"]) == set(IDIOMAS)
+                assert all(len(serie["rotulos"][i]) == len(serie["pontos"]) for i in IDIOMAS)
+                assert [rot for rot, _ in serie["pontos"]] == serie["rotulos"]["pt"]
+        else:
+            assert all(len(ponto) == 2 and all(np.isfinite(v) for v in ponto) for ponto in serie["pontos"])
+    if "faixa" in grafico:
+        assert grafico["tipo"] == "linhas" and 0 <= grafico["faixa"]["serie"] < len(grafico["series"])
+        assert len(grafico["faixa"]["inferior"]) == len(grafico["faixa"]["superior"])
 
 
 def conferir(bloco: dict) -> None:
@@ -223,3 +481,7 @@ def conferir(bloco: dict) -> None:
     assert grafico["tipo"] in ("linhas", "barras") and len(grafico["series"]) <= 4
     assert all(len(serie["pontos"]) <= 80 and serie["papel"] in ("principal", "base", "alternativa", "neutro") for serie in grafico["series"])
     assert all(np.isfinite(valor) for serie in grafico["series"] for ponto in serie["pontos"] for valor in ponto)
+    extras = bloco["graficos_extras"]
+    assert 3 <= len(extras) <= 5
+    for extra in extras:
+        conferir_grafico(extra, com_leitura=True)
