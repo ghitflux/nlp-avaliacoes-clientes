@@ -1,0 +1,2 @@
+# Arquivos de dados versionados ficam com fim de linha LF em qualquer sistema.
+data/*.csv text eol=lf

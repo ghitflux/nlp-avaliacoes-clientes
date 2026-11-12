@@ -1,0 +1,2938 @@
+{
+  "base": {
+    "linhas_no_arquivo": 132373,
+    "sem_resposta_em_recomendaria": 18,
+    "texto_vazio": 3383,
+    "mesma_avaliacao_repetida": 1180,
+    "mesmo_texto_em_outra_avaliacao": 1640,
+    "avaliacoes_usadas": 126152,
+    "primeira_data": "2018-01-01",
+    "ultima_data": "2018-05-31",
+    "categorias": 54,
+    "mediana_de_palavras": 16.0,
+    "periodos": {
+      "treino": {
+        "avaliacoes": 73183,
+        "de": "2018-01-01",
+        "ate": "2018-03-31",
+        "nao_recomendaria": 0.2536244756295861,
+        "nota_ate_2": 0.2508096142546766
+      },
+      "validação": {
+        "avaliacoes": 28660,
+        "de": "2018-04-01",
+        "ate": "2018-04-30",
+        "nao_recomendaria": 0.25764131193300766,
+        "nota_ate_2": 0.2570481507327285
+      },
+      "teste": {
+        "avaliacoes": 24309,
+        "de": "2018-05-01",
+        "ate": "2018-05-31",
+        "nao_recomendaria": 0.28252910444691265,
+        "nota_ate_2": 0.2813772676786375
+      }
+    },
+    "avaliadores_do_teste_vistos_no_treino": 0.056974783002180264,
+    "reamostragens_do_bootstrap": {
+      "tabelas principais": 1000,
+      "análises de apoio": 500,
+      "recortes da análise de erro": 200
+    },
+    "termos_no_tfidf_de_palavras": 51108,
+    "termos_no_tfidf_de_caracteres": 77585,
+    "parcela_do_teste_com_termo_do_lexico": 0.33127648196141346
+  },
+  "discordancia_por_nota": {
+    "1": {
+      "avaliações": 24579,
+      "não recomendaria": 0.971154,
+      "IC 95% inferior": 0.968987,
+      "IC 95% superior": 0.973174
+    },
+    "2": {
+      "avaliações": 7983,
+      "não recomendaria": 0.7531,
+      "IC 95% inferior": 0.743521,
+      "IC 95% superior": 0.762436
+    },
+    "3": {
+      "avaliações": 15773,
+      "não recomendaria": 0.113358,
+      "IC 95% inferior": 0.108505,
+      "IC 95% superior": 0.1184
+    },
+    "4": {
+      "avaliações": 31612,
+      "não recomendaria": 0.015058,
+      "IC 95% inferior": 0.013773,
+      "IC 95% superior": 0.01646
+    },
+    "5": {
+      "avaliações": 46205,
+      "não recomendaria": 0.014436,
+      "IC 95% inferior": 0.013388,
+      "IC 95% superior": 0.015564
+    }
+  },
+  "discordancia": {
+    "rotulos_discordam": {
+      "avaliacoes": 5611,
+      "de": 126152,
+      "parcela": 0.04447808992326717,
+      "inferior": 0.043354280731504075,
+      "superior": 0.04562964049647164
+    },
+    "nota_baixa_mas_recomendaria": {
+      "avaliacoes": 2680,
+      "de": 32562,
+      "parcela": 0.0823045267489712,
+      "inferior": 0.07936850300083362,
+      "superior": 0.08533909301210033
+    },
+    "nota_alta_mas_nao_recomendaria": {
+      "avaliacoes": 1143,
+      "de": 77817,
+      "parcela": 0.014688307182235244,
+      "inferior": 0.013866698172604747,
+      "superior": 0.015557828932160313
+    },
+    "nota_3_e_nao_recomendaria": {
+      "avaliacoes": 1788,
+      "de": 15773,
+      "parcela": 0.1133582704621822,
+      "inferior": 0.10850455307664107,
+      "superior": 0.11840027246556122
+    },
+    "nao_recomendaria_com_nota_3_ou_mais": {
+      "avaliacoes": 2931,
+      "de": 32813,
+      "parcela": 0.08932435315271386,
+      "inferior": 0.08628626043817854,
+      "superior": 0.09245859123139129
+    }
+  },
+  "regularizacao": {
+    "TF-IDF de palavras + regressão logística": {
+      "0.3": {
+        "AUC na validação": 0.963218,
+        "escolhido": false
+      },
+      "1.0": {
+        "AUC na validação": 0.965138,
+        "escolhido": true
+      },
+      "3.0": {
+        "AUC na validação": 0.965102,
+        "escolhido": false
+      },
+      "10.0": {
+        "AUC na validação": 0.962819,
+        "escolhido": false
+      }
+    },
+    "TF-IDF de caracteres + regressão logística": {
+      "0.3": {
+        "AUC na validação": 0.962758,
+        "escolhido": false
+      },
+      "1.0": {
+        "AUC na validação": 0.964156,
+        "escolhido": true
+      },
+      "3.0": {
+        "AUC na validação": 0.964138,
+        "escolhido": false
+      },
+      "10.0": {
+        "AUC na validação": 0.962236,
+        "escolhido": false
+      }
+    }
+  },
+  "modelo_principal": "TF-IDF de palavras + regressão logística",
+  "melhor_modelo_na_validacao": "TF-IDF de palavras + regressão logística",
+  "desempenho": {
+    "Léxico de palavras negativas": {
+      "AUC": 0.857287,
+      "AUC inf": 0.851992,
+      "AUC sup": 0.862839,
+      "precisão lendo 10%": 0.890225,
+      "precisão lendo 10% inf": 0.877556,
+      "precisão lendo 10% sup": 0.901961,
+      "revocação lendo 10%": 0.315091,
+      "revocação lendo 10% inf": 0.308083,
+      "revocação lendo 10% sup": 0.321309,
+      "leitura para pegar 80%": 0.328,
+      "leitura para pegar 80% inf": 0.323,
+      "leitura para pegar 80% sup": 0.34
+    },
+    "TF-IDF de palavras + regressão logística": {
+      "AUC": 0.962595,
+      "AUC inf": 0.959814,
+      "AUC sup": 0.965222,
+      "precisão lendo 10%": 0.958452,
+      "precisão lendo 10% inf": 0.949813,
+      "precisão lendo 10% sup": 0.966679,
+      "revocação lendo 10%": 0.33924,
+      "revocação lendo 10% inf": 0.332119,
+      "revocação lendo 10% sup": 0.345612,
+      "leitura para pegar 80%": 0.251,
+      "leitura para pegar 80% inf": 0.247,
+      "leitura para pegar 80% sup": 0.256025
+    },
+    "TF-IDF de caracteres + regressão logística": {
+      "AUC": 0.96134,
+      "AUC inf": 0.958629,
+      "AUC sup": 0.964018,
+      "precisão lendo 10%": 0.951458,
+      "precisão lendo 10% inf": 0.94282,
+      "precisão lendo 10% sup": 0.960097,
+      "revocação lendo 10%": 0.336765,
+      "revocação lendo 10% inf": 0.329401,
+      "revocação lendo 10% sup": 0.343658,
+      "leitura para pegar 80%": 0.252,
+      "leitura para pegar 80% inf": 0.248,
+      "leitura para pegar 80% sup": 0.258
+    }
+  },
+  "diferencas": {
+    "TF-IDF de palavras + regressão logística − Léxico de palavras negativas": {
+      "AUC": 0.105308,
+      "AUC inf": 0.100546,
+      "AUC sup": 0.109959,
+      "AUC empata": false,
+      "precisão lendo 10%": 0.068227,
+      "precisão lendo 10% inf": 0.057634,
+      "precisão lendo 10% sup": 0.08047,
+      "precisão lendo 10% empata": false,
+      "revocação lendo 10%": 0.024149,
+      "revocação lendo 10% inf": 0.020285,
+      "revocação lendo 10% sup": 0.028642,
+      "revocação lendo 10% empata": false,
+      "leitura para pegar 80%": -0.077,
+      "leitura para pegar 80% inf": -0.088,
+      "leitura para pegar 80% sup": -0.072975,
+      "leitura para pegar 80% empata": false
+    },
+    "TF-IDF de palavras + regressão logística − TF-IDF de caracteres + regressão logística": {
+      "AUC": 0.001254,
+      "AUC inf": 0.000634,
+      "AUC sup": 0.001878,
+      "AUC empata": false,
+      "precisão lendo 10%": 0.006993,
+      "precisão lendo 10% inf": 0.001644,
+      "precisão lendo 10% sup": 0.012752,
+      "precisão lendo 10% empata": false,
+      "revocação lendo 10%": 0.002475,
+      "revocação lendo 10% inf": 0.000572,
+      "revocação lendo 10% sup": 0.004485,
+      "revocação lendo 10% empata": false,
+      "leitura para pegar 80%": -0.001,
+      "leitura para pegar 80% inf": -0.003,
+      "leitura para pegar 80% sup": 0.0,
+      "leitura para pegar 80% empata": true
+    }
+  },
+  "curvas_de_captura": [
+    {
+      "index": 0,
+      "parcela lida": 0.0,
+      "TF-IDF de palavras + regressão logística": 0.0,
+      "Léxico de palavras negativas": 0.0,
+      "acaso": 0.0,
+      "teto": 0.0,
+      "TF-IDF de palavras + regressão logística inf": 0.0,
+      "TF-IDF de palavras + regressão logística sup": 0.0
+    },
+    {
+      "index": 1,
+      "parcela lida": 0.025,
+      "TF-IDF de palavras + regressão logística": 0.086594,
+      "Léxico de palavras negativas": 0.0816,
+      "acaso": 0.025,
+      "teto": 0.088486,
+      "TF-IDF de palavras + regressão logística inf": 0.084396,
+      "TF-IDF de palavras + regressão logística sup": 0.088496
+    },
+    {
+      "index": 2,
+      "parcela lida": 0.05,
+      "TF-IDF de palavras + regressão logística": 0.171149,
+      "Léxico de palavras negativas": 0.160962,
+      "acaso": 0.05,
+      "teto": 0.176973,
+      "TF-IDF de palavras + regressão logística inf": 0.167063,
+      "TF-IDF de palavras + regressão logística sup": 0.174837
+    },
+    {
+      "index": 3,
+      "parcela lida": 0.075,
+      "TF-IDF de palavras + regressão logística": 0.255122,
+      "Léxico de palavras negativas": 0.238027,
+      "acaso": 0.075,
+      "teto": 0.265459,
+      "TF-IDF de palavras + regressão logística inf": 0.25006,
+      "TF-IDF de palavras + regressão logística sup": 0.260294
+    },
+    {
+      "index": 4,
+      "parcela lida": 0.1,
+      "TF-IDF de palavras + regressão logística": 0.33924,
+      "Léxico de palavras negativas": 0.315091,
+      "acaso": 0.1,
+      "teto": 0.353946,
+      "TF-IDF de palavras + regressão logística inf": 0.332119,
+      "TF-IDF de palavras + regressão logística sup": 0.345612
+    },
+    {
+      "index": 5,
+      "parcela lida": 0.125,
+      "TF-IDF de palavras + regressão logística": 0.422048,
+      "Léxico de palavras negativas": 0.384554,
+      "acaso": 0.125,
+      "teto": 0.442432,
+      "TF-IDF de palavras + regressão logística inf": 0.413708,
+      "TF-IDF de palavras + regressão logística sup": 0.429365
+    },
+    {
+      "index": 6,
+      "parcela lida": 0.15,
+      "TF-IDF de palavras + regressão logística": 0.501798,
+      "Léxico de palavras negativas": 0.452045,
+      "acaso": 0.15,
+      "teto": 0.530919,
+      "TF-IDF de palavras + regressão logística inf": 0.49119,
+      "TF-IDF de palavras + regressão logística sup": 0.51115
+    },
+    {
+      "index": 7,
+      "parcela lida": 0.175,
+      "TF-IDF de palavras + regressão logística": 0.581548,
+      "Léxico de palavras negativas": 0.519537,
+      "acaso": 0.175,
+      "teto": 0.619405,
+      "TF-IDF de palavras + regressão logística inf": 0.57014,
+      "TF-IDF de palavras + regressão logística sup": 0.592075
+    },
+    {
+      "index": 8,
+      "parcela lida": 0.2,
+      "TF-IDF de palavras + regressão logística": 0.65795,
+      "Léxico de palavras negativas": 0.584215,
+      "acaso": 0.2,
+      "teto": 0.707892,
+      "TF-IDF de palavras + regressão logística inf": 0.645991,
+      "TF-IDF de palavras + regressão logística sup": 0.668699
+    },
+    {
+      "index": 9,
+      "parcela lida": 0.225,
+      "TF-IDF de palavras + regressão logística": 0.731363,
+      "Léxico de palavras negativas": 0.62649,
+      "acaso": 0.225,
+      "teto": 0.796378,
+      "TF-IDF de palavras + regressão logística inf": 0.718771,
+      "TF-IDF de palavras + regressão logística sup": 0.742031
+    },
+    {
+      "index": 10,
+      "parcela lida": 0.25,
+      "TF-IDF de palavras + regressão logística": 0.797649,
+      "Léxico de palavras negativas": 0.668765,
+      "acaso": 0.25,
+      "teto": 0.884865,
+      "TF-IDF de palavras + regressão logística inf": 0.785121,
+      "TF-IDF de palavras + regressão logística sup": 0.810528
+    },
+    {
+      "index": 11,
+      "parcela lida": 0.275,
+      "TF-IDF de palavras + regressão logística": 0.858183,
+      "Léxico de palavras negativas": 0.71104,
+      "acaso": 0.275,
+      "teto": 0.973351,
+      "TF-IDF de palavras + regressão logística inf": 0.846518,
+      "TF-IDF de palavras + regressão logística sup": 0.868085
+    },
+    {
+      "index": 12,
+      "parcela lida": 0.3,
+      "TF-IDF de palavras + regressão logística": 0.899825,
+      "Léxico de palavras negativas": 0.753314,
+      "acaso": 0.3,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.889767,
+      "TF-IDF de palavras + regressão logística sup": 0.907747
+    },
+    {
+      "index": 13,
+      "parcela lida": 0.325,
+      "TF-IDF de palavras + regressão logística": 0.927344,
+      "Léxico de palavras negativas": 0.795589,
+      "acaso": 0.325,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.919855,
+      "TF-IDF de palavras + regressão logística sup": 0.933729
+    },
+    {
+      "index": 14,
+      "parcela lida": 0.35,
+      "TF-IDF de palavras + regressão logística": 0.946564,
+      "Léxico de palavras negativas": 0.811629,
+      "acaso": 0.35,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.940239,
+      "TF-IDF de palavras + regressão logística sup": 0.951714
+    },
+    {
+      "index": 15,
+      "parcela lida": 0.375,
+      "TF-IDF de palavras + regressão logística": 0.957193,
+      "Léxico de palavras negativas": 0.818874,
+      "acaso": 0.375,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.952169,
+      "TF-IDF de palavras + regressão logística sup": 0.961803
+    },
+    {
+      "index": 16,
+      "parcela lida": 0.4,
+      "TF-IDF de palavras + regressão logística": 0.962289,
+      "Léxico de palavras negativas": 0.826119,
+      "acaso": 0.4,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.958086,
+      "TF-IDF de palavras + regressão logística sup": 0.966955
+    },
+    {
+      "index": 17,
+      "parcela lida": 0.425,
+      "TF-IDF de palavras + regressão logística": 0.966267,
+      "Léxico de palavras negativas": 0.833364,
+      "acaso": 0.425,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.962143,
+      "TF-IDF de palavras + regressão logística sup": 0.970506
+    },
+    {
+      "index": 18,
+      "parcela lida": 0.45,
+      "TF-IDF de palavras + regressão logística": 0.970297,
+      "Léxico de palavras negativas": 0.840609,
+      "acaso": 0.45,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.96651,
+      "TF-IDF de palavras + regressão logística sup": 0.974433
+    },
+    {
+      "index": 19,
+      "parcela lida": 0.475,
+      "TF-IDF de palavras + regressão logística": 0.9735,
+      "Léxico de palavras negativas": 0.847854,
+      "acaso": 0.475,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.969608,
+      "TF-IDF de palavras + regressão logística sup": 0.976948
+    },
+    {
+      "index": 20,
+      "parcela lida": 0.5,
+      "TF-IDF de palavras + regressão logística": 0.975102,
+      "Léxico de palavras negativas": 0.855099,
+      "acaso": 0.5,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.97152,
+      "TF-IDF de palavras + regressão logística sup": 0.978783
+    },
+    {
+      "index": 21,
+      "parcela lida": 0.525,
+      "TF-IDF de palavras + regressão logística": 0.977868,
+      "Léxico de palavras negativas": 0.862344,
+      "acaso": 0.525,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.974447,
+      "TF-IDF de palavras + regressão logística sup": 0.981128
+    },
+    {
+      "index": 22,
+      "parcela lida": 0.55,
+      "TF-IDF de palavras + regressão logística": 0.979761,
+      "Léxico de palavras negativas": 0.869589,
+      "acaso": 0.55,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.976494,
+      "TF-IDF de palavras + regressão logística sup": 0.982949
+    },
+    {
+      "index": 23,
+      "parcela lida": 0.575,
+      "TF-IDF de palavras + regressão logística": 0.981217,
+      "Léxico de palavras negativas": 0.876834,
+      "acaso": 0.575,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.978123,
+      "TF-IDF de palavras + regressão logística sup": 0.984562
+    },
+    {
+      "index": 24,
+      "parcela lida": 0.6,
+      "TF-IDF de palavras + regressão logística": 0.982382,
+      "Léxico de palavras negativas": 0.884079,
+      "acaso": 0.6,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.979157,
+      "TF-IDF de palavras + regressão logística sup": 0.985292
+    },
+    {
+      "index": 25,
+      "parcela lida": 0.625,
+      "TF-IDF de palavras + regressão logística": 0.982964,
+      "Léxico de palavras negativas": 0.891324,
+      "acaso": 0.625,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.979932,
+      "TF-IDF de palavras + regressão logística sup": 0.985895
+    },
+    {
+      "index": 26,
+      "parcela lida": 0.65,
+      "TF-IDF de palavras + regressão logística": 0.984421,
+      "Léxico de palavras negativas": 0.898569,
+      "acaso": 0.65,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.981576,
+      "TF-IDF de palavras + regressão logística sup": 0.987206
+    },
+    {
+      "index": 27,
+      "parcela lida": 0.675,
+      "TF-IDF de palavras + regressão logística": 0.985149,
+      "Léxico de palavras negativas": 0.905814,
+      "acaso": 0.675,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.98255,
+      "TF-IDF de palavras + regressão logística sup": 0.987796
+    },
+    {
+      "index": 28,
+      "parcela lida": 0.7,
+      "TF-IDF de palavras + regressão logística": 0.986313,
+      "Léxico de palavras negativas": 0.913059,
+      "acaso": 0.7,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.983724,
+      "TF-IDF de palavras + regressão logística sup": 0.988865
+    },
+    {
+      "index": 29,
+      "parcela lida": 0.725,
+      "TF-IDF de palavras + regressão logística": 0.987041,
+      "Léxico de palavras negativas": 0.920304,
+      "acaso": 0.725,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.984457,
+      "TF-IDF de palavras + regressão logística sup": 0.989533
+    },
+    {
+      "index": 30,
+      "parcela lida": 0.75,
+      "TF-IDF de palavras + regressão logística": 0.988206,
+      "Léxico de palavras negativas": 0.92755,
+      "acaso": 0.75,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.985899,
+      "TF-IDF de palavras + regressão logística sup": 0.990653
+    },
+    {
+      "index": 31,
+      "parcela lida": 0.775,
+      "TF-IDF de palavras + regressão logística": 0.989662,
+      "Léxico de palavras negativas": 0.934795,
+      "acaso": 0.775,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.987414,
+      "TF-IDF de palavras + regressão logística sup": 0.99193
+    },
+    {
+      "index": 32,
+      "parcela lida": 0.8,
+      "TF-IDF de palavras + regressão logística": 0.991555,
+      "Léxico de palavras negativas": 0.94204,
+      "acaso": 0.8,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.989447,
+      "TF-IDF de palavras + regressão logística sup": 0.993448
+    },
+    {
+      "index": 33,
+      "parcela lida": 0.825,
+      "TF-IDF de palavras + regressão logística": 0.992574,
+      "Léxico de palavras negativas": 0.949285,
+      "acaso": 0.825,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.990644,
+      "TF-IDF de palavras + regressão logística sup": 0.994435
+    },
+    {
+      "index": 34,
+      "parcela lida": 0.85,
+      "TF-IDF de palavras + regressão logística": 0.993739,
+      "Léxico de palavras negativas": 0.95653,
+      "acaso": 0.85,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.991852,
+      "TF-IDF de palavras + regressão logística sup": 0.995459
+    },
+    {
+      "index": 35,
+      "parcela lida": 0.875,
+      "TF-IDF de palavras + regressão logística": 0.994758,
+      "Léxico de palavras negativas": 0.963775,
+      "acaso": 0.875,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.99313,
+      "TF-IDF de palavras + regressão logística sup": 0.996348
+    },
+    {
+      "index": 36,
+      "parcela lida": 0.9,
+      "TF-IDF de palavras + regressão logística": 0.995923,
+      "Léxico de palavras negativas": 0.97102,
+      "acaso": 0.9,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.994428,
+      "TF-IDF de palavras + regressão logística sup": 0.997333
+    },
+    {
+      "index": 37,
+      "parcela lida": 0.925,
+      "TF-IDF de palavras + regressão logística": 0.996506,
+      "Léxico de palavras negativas": 0.978265,
+      "acaso": 0.925,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.995214,
+      "TF-IDF de palavras + regressão logística sup": 0.997923
+    },
+    {
+      "index": 38,
+      "parcela lida": 0.95,
+      "TF-IDF de palavras + regressão logística": 0.99767,
+      "Léxico de palavras negativas": 0.98551,
+      "acaso": 0.95,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.996512,
+      "TF-IDF de palavras + regressão logística sup": 0.998691
+    },
+    {
+      "index": 39,
+      "parcela lida": 0.975,
+      "TF-IDF de palavras + regressão logística": 0.999418,
+      "Léxico de palavras negativas": 0.992755,
+      "acaso": 0.975,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 0.998838,
+      "TF-IDF de palavras + regressão logística sup": 1.0
+    },
+    {
+      "index": 40,
+      "parcela lida": 1.0,
+      "TF-IDF de palavras + regressão logística": 1.0,
+      "Léxico de palavras negativas": 1.0,
+      "acaso": 1.0,
+      "teto": 1.0,
+      "TF-IDF de palavras + regressão logística inf": 1.0,
+      "TF-IDF de palavras + regressão logística sup": 1.0
+    }
+  ],
+  "regra_da_nota": {
+    "Regra \"nota até 2\"": {
+      "parcela marcada": 0.281377,
+      "precisão": 0.913304,
+      "precisão inf": 0.906446,
+      "precisão sup": 0.919896,
+      "revocação": 0.909581,
+      "revocação inf": 0.903097,
+      "revocação sup": 0.916275
+    },
+    "Texto, marcando o mesmo volume": {
+      "parcela marcada": 0.281377,
+      "precisão": 0.87383,
+      "precisão inf": 0.862573,
+      "precisão sup": 0.88436,
+      "revocação": 0.870268,
+      "revocação inf": 0.858972,
+      "revocação sup": 0.879598
+    }
+  },
+  "auc_por_rotulo": [
+    {
+      "treinado com": "\"não recomendaria\"",
+      "avaliado contra": "não recomendaria",
+      "avaliações": 24309,
+      "reclamações": 0.282529,
+      "AUC": 0.962595,
+      "IC 95% inferior": 0.959737,
+      "IC 95% superior": 0.965137
+    },
+    {
+      "treinado com": "\"não recomendaria\"",
+      "avaliado contra": "nota até 2",
+      "avaliações": 24309,
+      "reclamações": 0.281377,
+      "AUC": 0.979933,
+      "IC 95% inferior": 0.978311,
+      "IC 95% superior": 0.981617
+    },
+    {
+      "treinado com": "\"não recomendaria\"",
+      "avaliado contra": "só onde os dois concordam",
+      "avaliações": 23095,
+      "reclamações": 0.270491,
+      "AUC": 0.989025,
+      "IC 95% inferior": 0.988004,
+      "IC 95% superior": 0.990011
+    },
+    {
+      "treinado com": "\"não recomendaria\"",
+      "avaliado contra": "qualquer um dos dois sinais",
+      "avaliações": 24309,
+      "reclamações": 0.306923,
+      "AUC": 0.967559,
+      "IC 95% inferior": 0.964876,
+      "IC 95% superior": 0.970066
+    },
+    {
+      "treinado com": "\"nota até 2\"",
+      "avaliado contra": "não recomendaria",
+      "avaliações": 24309,
+      "reclamações": 0.282529,
+      "AUC": 0.96199,
+      "IC 95% inferior": 0.959115,
+      "IC 95% superior": 0.964492
+    },
+    {
+      "treinado com": "\"nota até 2\"",
+      "avaliado contra": "nota até 2",
+      "avaliações": 24309,
+      "reclamações": 0.281377,
+      "AUC": 0.980517,
+      "IC 95% inferior": 0.978911,
+      "IC 95% superior": 0.982088
+    },
+    {
+      "treinado com": "\"nota até 2\"",
+      "avaliado contra": "só onde os dois concordam",
+      "avaliações": 23095,
+      "reclamações": 0.270491,
+      "AUC": 0.988985,
+      "IC 95% inferior": 0.987923,
+      "IC 95% superior": 0.989987
+    },
+    {
+      "treinado com": "\"nota até 2\"",
+      "avaliado contra": "qualquer um dos dois sinais",
+      "avaliações": 24309,
+      "reclamações": 0.306923,
+      "AUC": 0.967938,
+      "IC 95% inferior": 0.96517,
+      "IC 95% superior": 0.970473
+    }
+  ],
+  "texto_dentro_da_nota": {
+    "1": {
+      "avaliações": 5165,
+      "não recomendaria": 0.967667,
+      "AUC do texto": 0.664911,
+      "IC 95% inferior": 0.625114,
+      "IC 95% superior": 0.706124
+    },
+    "2": {
+      "avaliações": 1675,
+      "não recomendaria": 0.745672,
+      "AUC do texto": 0.708717,
+      "IC 95% inferior": 0.681292,
+      "IC 95% superior": 0.740261
+    },
+    "3": {
+      "avaliações": 3090,
+      "não recomendaria": 0.118123,
+      "AUC do texto": 0.807824,
+      "IC 95% inferior": 0.7855,
+      "IC 95% superior": 0.829957
+    },
+    "4": {
+      "avaliações": 5887,
+      "não recomendaria": 0.017156,
+      "AUC do texto": 0.684116,
+      "IC 95% inferior": 0.616871,
+      "IC 95% superior": 0.744555
+    },
+    "5": {
+      "avaliações": 8492,
+      "não recomendaria": 0.018252,
+      "AUC do texto": 0.599495,
+      "IC 95% inferior": 0.551549,
+      "IC 95% superior": 0.652555
+    }
+  },
+  "nota_e_texto": {
+    "Só a nota": {
+      "AUC": 0.964184,
+      "AUC inf": 0.961354,
+      "AUC sup": 0.967227,
+      "precisão lendo 10%": 0.967667,
+      "precisão lendo 10% inf": 0.963206,
+      "precisão lendo 10% sup": 0.972141,
+      "revocação lendo 10%": 0.342502,
+      "revocação lendo 10% inf": 0.335544,
+      "revocação lendo 10% sup": 0.348555,
+      "leitura para pegar 80%": 0.24,
+      "leitura para pegar 80% inf": 0.236,
+      "leitura para pegar 80% sup": 0.245
+    },
+    "Nota + texto": {
+      "AUC": 0.973721,
+      "AUC inf": 0.971025,
+      "AUC sup": 0.976136,
+      "precisão lendo 10%": 0.983957,
+      "precisão lendo 10% inf": 0.978609,
+      "precisão lendo 10% sup": 0.988286,
+      "revocação lendo 10%": 0.348267,
+      "revocação lendo 10% inf": 0.341193,
+      "revocação lendo 10% sup": 0.354731,
+      "leitura para pegar 80%": 0.236,
+      "leitura para pegar 80% inf": 0.232,
+      "leitura para pegar 80% sup": 0.241
+    }
+  },
+  "nota_e_texto_diferenca": {
+    "Nota + texto − Só a nota": {
+      "AUC": 0.009538,
+      "AUC inf": 0.007973,
+      "AUC sup": 0.01109,
+      "AUC empata": false,
+      "precisão lendo 10%": 0.01629,
+      "precisão lendo 10% inf": 0.011158,
+      "precisão lendo 10% sup": 0.02075,
+      "precisão lendo 10% empata": false,
+      "revocação lendo 10%": 0.005766,
+      "revocação lendo 10% inf": 0.003985,
+      "revocação lendo 10% sup": 0.007376,
+      "revocação lendo 10% empata": false,
+      "leitura para pegar 80%": -0.004,
+      "leitura para pegar 80% inf": -0.005,
+      "leitura para pegar 80% sup": -0.003,
+      "leitura para pegar 80% empata": false
+    }
+  },
+  "nota_alta_texto_negativo": {
+    "avaliacoes": 14123,
+    "lidas_como_reclamacao": 187,
+    "parcela": 0.013240812858457835,
+    "inferior": 0.011483633077423226,
+    "superior": 0.015262717826428162
+  },
+  "calibracao": {
+    "platt_a": 1.1870855321292968,
+    "platt_b": 0.019378556864282727,
+    "bruta": {
+      "erro_de_calibracao": 0.03343432963075101,
+      "inferior": 0.030211147590988592,
+      "superior": 0.036278081136633146,
+      "brier": 0.05898916108227202,
+      "probabilidade_media": 0.282688030761634,
+      "frequencia_observada": 0.28252910444691265
+    },
+    "recalibrada": {
+      "erro_de_calibracao": 0.0212036644759917,
+      "inferior": 0.01796921914793805,
+      "superior": 0.024185604361978242,
+      "brier": 0.057637214898150574,
+      "probabilidade_media": 0.28034998149891854,
+      "frequencia_observada": 0.28252910444691265
+    },
+    "diferenca_recalibrada_menos_bruta": {
+      "valor": -0.012230665154759311,
+      "inferior": -0.013800889547136024,
+      "superior": -0.01098128025780796
+    }
+  },
+  "curvas_de_calibracao": [
+    {
+      "index": 0,
+      "versão": "bruta",
+      "faixa": 1,
+      "prevista": 0.001441,
+      "observada": 0.011518,
+      "avaliações": 2431
+    },
+    {
+      "index": 1,
+      "versão": "bruta",
+      "faixa": 2,
+      "prevista": 0.005273,
+      "observada": 0.012341,
+      "avaliações": 2431
+    },
+    {
+      "index": 2,
+      "versão": "bruta",
+      "faixa": 3,
+      "prevista": 0.011605,
+      "observada": 0.014809,
+      "avaliações": 2431
+    },
+    {
+      "index": 3,
+      "versão": "bruta",
+      "faixa": 4,
+      "prevista": 0.022761,
+      "observada": 0.011107,
+      "avaliações": 2431
+    },
+    {
+      "index": 4,
+      "versão": "bruta",
+      "faixa": 5,
+      "prevista": 0.044126,
+      "observada": 0.020568,
+      "avaliações": 2431
+    },
+    {
+      "index": 5,
+      "versão": "bruta",
+      "faixa": 6,
+      "prevista": 0.094454,
+      "observada": 0.036199,
+      "avaliações": 2431
+    },
+    {
+      "index": 6,
+      "versão": "bruta",
+      "faixa": 7,
+      "prevista": 0.250962,
+      "observada": 0.176471,
+      "avaliações": 2431
+    },
+    {
+      "index": 7,
+      "versão": "bruta",
+      "faixa": 8,
+      "prevista": 0.596017,
+      "observada": 0.683669,
+      "avaliações": 2431
+    },
+    {
+      "index": 8,
+      "versão": "bruta",
+      "faixa": 9,
+      "prevista": 0.84464,
+      "observada": 0.900452,
+      "avaliações": 2431
+    },
+    {
+      "index": 9,
+      "versão": "bruta",
+      "faixa": 10,
+      "prevista": 0.955879,
+      "observada": 0.958436,
+      "avaliações": 2430
+    },
+    {
+      "index": 10,
+      "versão": "recalibrada",
+      "faixa": 1,
+      "prevista": 0.00045,
+      "observada": 0.011518,
+      "avaliações": 2431
+    },
+    {
+      "index": 11,
+      "versão": "recalibrada",
+      "faixa": 2,
+      "prevista": 0.00204,
+      "observada": 0.012341,
+      "avaliações": 2431
+    },
+    {
+      "index": 12,
+      "versão": "recalibrada",
+      "faixa": 3,
+      "prevista": 0.005211,
+      "observada": 0.014809,
+      "avaliações": 2431
+    },
+    {
+      "index": 13,
+      "versão": "recalibrada",
+      "faixa": 4,
+      "prevista": 0.011667,
+      "observada": 0.011107,
+      "avaliações": 2431
+    },
+    {
+      "index": 14,
+      "versão": "recalibrada",
+      "faixa": 5,
+      "prevista": 0.025928,
+      "observada": 0.020568,
+      "avaliações": 2431
+    },
+    {
+      "index": 15,
+      "versão": "recalibrada",
+      "faixa": 6,
+      "prevista": 0.065707,
+      "observada": 0.036199,
+      "avaliações": 2431
+    },
+    {
+      "index": 16,
+      "versão": "recalibrada",
+      "faixa": 7,
+      "prevista": 0.22053,
+      "observada": 0.176471,
+      "avaliações": 2431
+    },
+    {
+      "index": 17,
+      "versão": "recalibrada",
+      "faixa": 8,
+      "prevista": 0.615856,
+      "observada": 0.683669,
+      "avaliações": 2431
+    },
+    {
+      "index": 18,
+      "versão": "recalibrada",
+      "faixa": 9,
+      "prevista": 0.882323,
+      "observada": 0.900452,
+      "avaliações": 2431
+    },
+    {
+      "index": 19,
+      "versão": "recalibrada",
+      "faixa": 10,
+      "prevista": 0.974074,
+      "observada": 0.958436,
+      "avaliações": 2430
+    }
+  ],
+  "erros_por_recorte": [
+    {
+      "recorte": "assunto",
+      "grupo": "fala de entrega ou prazo",
+      "avaliações": 9060,
+      "reclamações": 0.320199,
+      "AUC": 0.962333,
+      "IC 95% inferior": 0.958153,
+      "IC 95% superior": 0.966591,
+      "reclamações perdidas": 0.08273,
+      "alarmes falsos": 0.069167
+    },
+    {
+      "recorte": "assunto",
+      "grupo": "não fala de entrega",
+      "avaliações": 15249,
+      "reclamações": 0.260148,
+      "AUC": 0.961448,
+      "IC 95% inferior": 0.957756,
+      "IC 95% superior": 0.965376,
+      "reclamações perdidas": 0.179229,
+      "alarmes falsos": 0.0351
+    },
+    {
+      "recorte": "gênero",
+      "grupo": "F",
+      "avaliações": 11054,
+      "reclamações": 0.280441,
+      "AUC": 0.965123,
+      "IC 95% inferior": 0.961076,
+      "IC 95% superior": 0.968857,
+      "reclamações perdidas": 0.121935,
+      "alarmes falsos": 0.0435
+    },
+    {
+      "recorte": "gênero",
+      "grupo": "M",
+      "avaliações": 12348,
+      "reclamações": 0.285633,
+      "AUC": 0.960418,
+      "IC 95% inferior": 0.955879,
+      "IC 95% superior": 0.963992,
+      "reclamações perdidas": 0.148852,
+      "alarmes falsos": 0.050788
+    },
+    {
+      "recorte": "gênero",
+      "grupo": "não informado",
+      "avaliações": 907,
+      "reclamações": 0.265711,
+      "AUC": 0.955298,
+      "IC 95% inferior": 0.938497,
+      "IC 95% superior": 0.967402,
+      "reclamações perdidas": 0.19917,
+      "alarmes falsos": 0.042042
+    },
+    {
+      "recorte": "idade",
+      "grupo": "18 a 29",
+      "avaliações": 4497,
+      "reclamações": 0.285524,
+      "AUC": 0.961698,
+      "IC 95% inferior": 0.954604,
+      "IC 95% superior": 0.967831,
+      "reclamações perdidas": 0.130841,
+      "alarmes falsos": 0.051043
+    },
+    {
+      "recorte": "idade",
+      "grupo": "30 a 39",
+      "avaliações": 7503,
+      "reclamações": 0.299613,
+      "AUC": 0.960565,
+      "IC 95% inferior": 0.955566,
+      "IC 95% superior": 0.96495,
+      "reclamações perdidas": 0.141014,
+      "alarmes falsos": 0.05176
+    },
+    {
+      "recorte": "idade",
+      "grupo": "40 a 49",
+      "avaliações": 5344,
+      "reclamações": 0.296407,
+      "AUC": 0.965019,
+      "IC 95% inferior": 0.959447,
+      "IC 95% superior": 0.970709,
+      "reclamações perdidas": 0.132576,
+      "alarmes falsos": 0.040426
+    },
+    {
+      "recorte": "idade",
+      "grupo": "50 a 59",
+      "avaliações": 3542,
+      "reclamações": 0.256635,
+      "AUC": 0.964686,
+      "IC 95% inferior": 0.956471,
+      "IC 95% superior": 0.97093,
+      "reclamações perdidas": 0.123212,
+      "alarmes falsos": 0.046335
+    },
+    {
+      "recorte": "idade",
+      "grupo": "60 ou mais",
+      "avaliações": 2138,
+      "reclamações": 0.231057,
+      "AUC": 0.966612,
+      "IC 95% inferior": 0.958492,
+      "IC 95% superior": 0.975726,
+      "reclamações perdidas": 0.168016,
+      "alarmes falsos": 0.041971
+    },
+    {
+      "recorte": "idade",
+      "grupo": "não informada",
+      "avaliações": 1285,
+      "reclamações": 0.271595,
+      "AUC": 0.95935,
+      "IC 95% inferior": 0.946922,
+      "IC 95% superior": 0.970565,
+      "reclamações perdidas": 0.174785,
+      "alarmes falsos": 0.04594
+    },
+    {
+      "recorte": "região",
+      "grupo": "Centro-Oeste",
+      "avaliações": 1233,
+      "reclamações": 0.293593,
+      "AUC": 0.956724,
+      "IC 95% inferior": 0.942163,
+      "IC 95% superior": 0.970909,
+      "reclamações perdidas": 0.138122,
+      "alarmes falsos": 0.049369
+    },
+    {
+      "recorte": "região",
+      "grupo": "Nordeste",
+      "avaliações": 3300,
+      "reclamações": 0.331818,
+      "AUC": 0.959349,
+      "IC 95% inferior": 0.951937,
+      "IC 95% superior": 0.965855,
+      "reclamações perdidas": 0.110502,
+      "alarmes falsos": 0.070748
+    },
+    {
+      "recorte": "região",
+      "grupo": "Norte",
+      "avaliações": 552,
+      "reclamações": 0.277174,
+      "AUC": 0.947041,
+      "IC 95% inferior": 0.922838,
+      "IC 95% superior": 0.968099,
+      "reclamações perdidas": 0.143791,
+      "alarmes falsos": 0.057644
+    },
+    {
+      "recorte": "região",
+      "grupo": "Sudeste",
+      "avaliações": 15229,
+      "reclamações": 0.274017,
+      "AUC": 0.96352,
+      "IC 95% inferior": 0.959913,
+      "IC 95% superior": 0.967536,
+      "reclamações perdidas": 0.138989,
+      "alarmes falsos": 0.043234
+    },
+    {
+      "recorte": "região",
+      "grupo": "Sul",
+      "avaliações": 3115,
+      "reclamações": 0.273515,
+      "AUC": 0.966655,
+      "IC 95% inferior": 0.958905,
+      "IC 95% superior": 0.973602,
+      "reclamações perdidas": 0.152582,
+      "alarmes falsos": 0.041538
+    },
+    {
+      "recorte": "região",
+      "grupo": "não informada",
+      "avaliações": 880,
+      "reclamações": 0.264773,
+      "AUC": 0.953698,
+      "IC 95% inferior": 0.937573,
+      "IC 95% superior": 0.966049,
+      "reclamações perdidas": 0.206009,
+      "alarmes falsos": 0.043277
+    },
+    {
+      "recorte": "tamanho do texto",
+      "grupo": "11 a 20",
+      "avaliações": 10271,
+      "reclamações": 0.227729,
+      "AUC": 0.962604,
+      "IC 95% inferior": 0.958589,
+      "IC 95% superior": 0.967728,
+      "reclamações perdidas": 0.154339,
+      "alarmes falsos": 0.030131
+    },
+    {
+      "recorte": "tamanho do texto",
+      "grupo": "21 a 40",
+      "avaliações": 5792,
+      "reclamações": 0.396754,
+      "AUC": 0.952085,
+      "IC 95% inferior": 0.946829,
+      "IC 95% superior": 0.956986,
+      "reclamações perdidas": 0.138381,
+      "alarmes falsos": 0.079565
+    },
+    {
+      "recorte": "tamanho do texto",
+      "grupo": "6 a 10",
+      "avaliações": 5057,
+      "reclamações": 0.124975,
+      "AUC": 0.951916,
+      "IC 95% inferior": 0.938885,
+      "IC 95% superior": 0.963347,
+      "reclamações perdidas": 0.178797,
+      "alarmes falsos": 0.011751
+    },
+    {
+      "recorte": "tamanho do texto",
+      "grupo": "até 5 palavras",
+      "avaliações": 144,
+      "reclamações": 0.076389,
+      "AUC": 0.967874,
+      "IC 95% inferior": 0.91417,
+      "IC 95% superior": 1.0,
+      "reclamações perdidas": 0.181818,
+      "alarmes falsos": 0.015038
+    },
+    {
+      "recorte": "tamanho do texto",
+      "grupo": "mais de 40",
+      "avaliações": 3045,
+      "reclamações": 0.521511,
+      "AUC": 0.929326,
+      "IC 95% inferior": 0.920009,
+      "IC 95% superior": 0.936609,
+      "reclamações perdidas": 0.098866,
+      "alarmes falsos": 0.172272
+    }
+  ],
+  "leitura_manual_de_erros": [
+    {
+      "tipo": "alarme falso",
+      "categoria": "reclamação de entrega ou atendimento",
+      "avaliações": 32,
+      "de": 45,
+      "parcela": 0.711111,
+      "IC 95% inferior": 0.566315,
+      "IC 95% superior": 0.822699
+    },
+    {
+      "tipo": "alarme falso",
+      "categoria": "reclamação do produto recebido",
+      "avaliações": 9,
+      "de": 45,
+      "parcela": 0.2,
+      "IC 95% inferior": 0.108961,
+      "IC 95% superior": 0.33823
+    },
+    {
+      "tipo": "alarme falso",
+      "categoria": "ironia ou comentário sobre o preço do anúncio",
+      "avaliações": 3,
+      "de": 45,
+      "parcela": 0.066667,
+      "IC 95% inferior": 0.022932,
+      "IC 95% superior": 0.178566
+    },
+    {
+      "tipo": "alarme falso",
+      "categoria": "ambíguo",
+      "avaliações": 1,
+      "de": 45,
+      "parcela": 0.022222,
+      "IC 95% inferior": 0.003934,
+      "IC 95% superior": 0.115667
+    },
+    {
+      "tipo": "reclamação perdida",
+      "categoria": "elogio e crítica no mesmo texto",
+      "avaliações": 26,
+      "de": 45,
+      "parcela": 0.577778,
+      "IC 95% inferior": 0.433008,
+      "IC 95% superior": 0.710313
+    },
+    {
+      "tipo": "reclamação perdida",
+      "categoria": "crítica sem palavra típica de reclamação",
+      "avaliações": 9,
+      "de": 45,
+      "parcela": 0.2,
+      "IC 95% inferior": 0.108961,
+      "IC 95% superior": 0.33823
+    },
+    {
+      "tipo": "reclamação perdida",
+      "categoria": "pergunta ou texto sem relato da compra",
+      "avaliações": 6,
+      "de": 45,
+      "parcela": 0.133333,
+      "IC 95% inferior": 0.062571,
+      "IC 95% superior": 0.261773
+    },
+    {
+      "tipo": "reclamação perdida",
+      "categoria": "ironia ou piada",
+      "avaliações": 4,
+      "de": 45,
+      "parcela": 0.088889,
+      "IC 95% inferior": 0.035111,
+      "IC 95% superior": 0.207336
+    }
+  ],
+  "leitura_manual_no_modelo_final": {
+    "alarme falso": {
+      "lidas": 45,
+      "ainda_entre_as_mais_extremas": 45
+    },
+    "reclamação perdida": {
+      "lidas": 45,
+      "ainda_entre_as_mais_extremas": 44
+    }
+  },
+  "estabilidade_por_numero_de_temas": {
+    "4": {
+      "estabilidade": 0.674301,
+      "mínimo": 0.384615,
+      "máximo": 0.909091,
+      "pares de execuções": 10
+    },
+    "6": {
+      "estabilidade": 0.595157,
+      "mínimo": 0.380749,
+      "máximo": 0.853535,
+      "pares de execuções": 10
+    },
+    "8": {
+      "estabilidade": 0.703777,
+      "mínimo": 0.630705,
+      "máximo": 0.867424,
+      "pares de execuções": 10
+    },
+    "10": {
+      "estabilidade": 0.617238,
+      "mínimo": 0.483686,
+      "máximo": 0.809091,
+      "pares de execuções": 45
+    },
+    "12": {
+      "estabilidade": 0.571126,
+      "mínimo": 0.497021,
+      "máximo": 0.772145,
+      "pares de execuções": 10
+    }
+  },
+  "numero_de_temas": 10,
+  "estabilidade_do_modelo_de_temas": {
+    "temas": 10,
+    "execucoes": 10,
+    "pares": 45,
+    "estabilidade": 0.6172378523513714,
+    "minimo": 0.4836864889496469,
+    "maximo": 0.809090909090909,
+    "palavras_repetidas_em_10": 7.633235290083556,
+    "reclamacoes_no_treino": 16925,
+    "reclamacoes_no_teste": 6247,
+    "reclamacoes_fora_do_treino": 12957,
+    "termos": 3305
+  },
+  "temas": {
+    "1": {
+      "motivo": "Produto não recebido",
+      "palavras": "nao_recebi, hoje, nao_avaliar, mes, agora, momento, comprei, paguei, gostaria, quero",
+      "estabilidade": 0.826573,
+      "parcela": 0.058268
+    },
+    "2": {
+      "motivo": "Loja e atendimento",
+      "palavras": "americanas, compra, site, loja, nem, agora, nada, nunca, recebi, comprei",
+      "estabilidade": 0.878788,
+      "parcela": 0.141668
+    },
+    "3": {
+      "motivo": "Material e acabamento ruins",
+      "palavras": "qualidade, pessima, ruim, material, baixa, nao_recomendo, fragil, ma, acabamento, horrivel",
+      "estabilidade": 0.824242,
+      "parcela": 0.077317
+    },
+    "4": {
+      "motivo": "Defeito, avaria ou item errado",
+      "palavras": "defeito, veio, troca, chegou, quebrado, devolucao, faltando, errado, nao_funciona, trocar",
+      "estabilidade": 0.64985,
+      "parcela": 0.112374
+    },
+    "5": {
+      "motivo": "Atraso e prazo de entrega",
+      "palavras": "entrega, prazo, dias, atraso, demora, dia, passou, data, nao_entregue, previsao",
+      "estabilidade": 0.758508,
+      "parcela": 0.057308
+    },
+    "6": {
+      "motivo": "Produto não recebido",
+      "palavras": "avaliar, nao_posso, posso, nao_entregue, nem, recebi, algo, avaliacao, receber, pedido",
+      "estabilidade": 0.706061,
+      "parcela": 0.046262
+    },
+    "7": {
+      "motivo": "Diferente do esperado ou do anunciado",
+      "palavras": "nao_gostei, ruim, nao_recomendo, foto, fraco, achei, diferente, agua, material, pequeno",
+      "estabilidade": 0.632536,
+      "parcela": 0.069473
+    },
+    "8": {
+      "motivo": "Produto não recebido",
+      "palavras": "nao_chegou, hoje, mes, dia, comprei, chegar, agora, faz, nada, pedido",
+      "estabilidade": 0.399841,
+      "parcela": 0.037778
+    },
+    "9": {
+      "motivo": "Desempenho ruim no uso",
+      "palavras": "mas, uso, comprei, mesmo, ruim, bem, aparelho, sem, celular, nao_funciona",
+      "estabilidade": 0.714452,
+      "parcela": 0.304466
+    },
+    "10": {
+      "motivo": "Desabafo sem motivo claro",
+      "palavras": "pessimo, nao_recomendo, dinheiro, atendimento, horrivel, ninguem, volta, quero, fora, nao_funciona",
+      "estabilidade": 0.563636,
+      "parcela": 0.094926
+    }
+  },
+  "motivos": {
+    "execucoes_do_reajuste": 10,
+    "tabela": {
+      "Produto não recebido": {
+        "família": "entrega e loja",
+        "parcela": 0.142308,
+        "amostragem inf": 0.133504,
+        "amostragem sup": 0.150796,
+        "reajuste inf": 0.088843,
+        "reajuste sup": 0.144709,
+        "menor entre execuções": 0.091404,
+        "maior entre execuções": 0.141348,
+        "temas": 3,
+        "estabilidade": 0.644158,
+        "execuções em que aparece": 10
+      },
+      "Atraso e prazo de entrega": {
+        "família": "entrega e loja",
+        "parcela": 0.057308,
+        "amostragem inf": 0.051701,
+        "amostragem sup": 0.06323,
+        "reajuste inf": 0.056827,
+        "reajuste sup": 0.112534,
+        "menor entre execuções": 0.059549,
+        "maior entre execuções": 0.110453,
+        "temas": 1,
+        "estabilidade": 0.758508,
+        "execuções em que aparece": 10
+      },
+      "Defeito, avaria ou item errado": {
+        "família": "produto",
+        "parcela": 0.112374,
+        "amostragem inf": 0.104686,
+        "amostragem sup": 0.120218,
+        "reajuste inf": 0.087558,
+        "reajuste sup": 0.181371,
+        "menor entre execuções": 0.091404,
+        "maior entre execuções": 0.179126,
+        "temas": 1,
+        "estabilidade": 0.64985,
+        "execuções em que aparece": 10
+      },
+      "Desempenho ruim no uso": {
+        "família": "produto",
+        "parcela": 0.304466,
+        "amostragem inf": 0.293257,
+        "amostragem sup": 0.316632,
+        "reajuste inf": 0.197535,
+        "reajuste sup": 0.318081,
+        "menor entre execuções": 0.202017,
+        "maior entre execuções": 0.314551,
+        "temas": 1,
+        "estabilidade": 0.714452,
+        "execuções em que aparece": 10
+      },
+      "Material e acabamento ruins": {
+        "família": "produto",
+        "parcela": 0.077317,
+        "amostragem inf": 0.070754,
+        "amostragem sup": 0.084681,
+        "reajuste inf": 0.065948,
+        "reajuste sup": 0.091408,
+        "menor entre execuções": 0.069473,
+        "maior entre execuções": 0.088843,
+        "temas": 1,
+        "estabilidade": 0.824242,
+        "execuções em que aparece": 10
+      },
+      "Diferente do esperado ou do anunciado": {
+        "família": "produto",
+        "parcela": 0.069473,
+        "amostragem inf": 0.06307,
+        "amostragem sup": 0.076197,
+        "reajuste inf": 0.0,
+        "reajuste sup": 0.197219,
+        "menor entre execuções": 0.0,
+        "maior entre execuções": 0.194013,
+        "temas": 1,
+        "estabilidade": 0.632536,
+        "execuções em que aparece": 8
+      },
+      "Loja e atendimento": {
+        "família": "entrega e loja",
+        "parcela": 0.141668,
+        "amostragem inf": 0.13334,
+        "amostragem sup": 0.150152,
+        "reajuste inf": 0.118613,
+        "reajuste sup": 0.236437,
+        "menor entre execuções": 0.120698,
+        "maior entre execuções": 0.233072,
+        "temas": 1,
+        "estabilidade": 0.878788,
+        "execuções em que aparece": 10
+      },
+      "Desabafo sem motivo claro": {
+        "família": "sem motivo claro",
+        "parcela": 0.094926,
+        "amostragem inf": 0.087878,
+        "amostragem sup": 0.102773,
+        "reajuste inf": 0.0,
+        "reajuste sup": 0.134629,
+        "menor entre execuções": 0.0,
+        "maior entre execuções": 0.130463,
+        "temas": 1,
+        "estabilidade": 0.563636,
+        "execuções em que aparece": 8
+      },
+      "Outros": {
+        "família": "sem motivo claro",
+        "parcela": 0.00016,
+        "amostragem inf": 0.0,
+        "amostragem sup": 0.00048,
+        "reajuste inf": 0.0,
+        "reajuste sup": 0.00048,
+        "menor entre execuções": 0.00016,
+        "maior entre execuções": 0.00016,
+        "temas": 0,
+        "estabilidade": null,
+        "execuções em que aparece": 0
+      }
+    }
+  },
+  "familias_de_motivos": {
+    "entrega e loja": {
+      "parcela": 0.341284,
+      "IC 95% inferior": 0.329598,
+      "IC 95% superior": 0.352493,
+      "menor entre execuções": 0.334401,
+      "maior entre execuções": 0.430927
+    },
+    "produto": {
+      "parcela": 0.563631,
+      "IC 95% inferior": 0.551625,
+      "IC 95% superior": 0.575164,
+      "menor entre execuções": 0.440852,
+      "maior entre execuções": 0.602529
+    },
+    "sem motivo claro": {
+      "parcela": 0.095086,
+      "IC 95% inferior": 0.088042,
+      "IC 95% superior": 0.103089,
+      "menor entre execuções": 0.00016,
+      "maior entre execuções": 0.130623
+    }
+  },
+  "motivos_por_categoria": {
+    "Celulares e Smartphones": {
+      "reclamações": 1523,
+      "Produto não recebido": 0.144452,
+      "Atraso e prazo de entrega": 0.076165,
+      "Defeito, avaria ou item errado": 0.101116,
+      "Desempenho ruim no uso": 0.374261,
+      "Material e acabamento ruins": 0.037426,
+      "Diferente do esperado ou do anunciado": 0.051215,
+      "Loja e atendimento": 0.132633,
+      "Desabafo sem motivo claro": 0.082075,
+      "Outros": 0.000657
+    },
+    "Móveis": {
+      "reclamações": 1146,
+      "Produto não recebido": 0.198953,
+      "Atraso e prazo de entrega": 0.123909,
+      "Defeito, avaria ou item errado": 0.120419,
+      "Desempenho ruim no uso": 0.159686,
+      "Material e acabamento ruins": 0.097731,
+      "Diferente do esperado ou do anunciado": 0.053229,
+      "Loja e atendimento": 0.163176,
+      "Desabafo sem motivo claro": 0.082897,
+      "Outros": 0.0
+    },
+    "Informática e Acessórios": {
+      "reclamações": 991,
+      "Produto não recebido": 0.189707,
+      "Atraso e prazo de entrega": 0.069627,
+      "Defeito, avaria ou item errado": 0.118063,
+      "Desempenho ruim no uso": 0.327952,
+      "Material e acabamento ruins": 0.060545,
+      "Diferente do esperado ou do anunciado": 0.039354,
+      "Loja e atendimento": 0.131181,
+      "Desabafo sem motivo claro": 0.063572,
+      "Outros": 0.0
+    },
+    "Beleza e Perfumaria": {
+      "reclamações": 831,
+      "Produto não recebido": 0.164862,
+      "Atraso e prazo de entrega": 0.045728,
+      "Defeito, avaria ou item errado": 0.09988,
+      "Desempenho ruim no uso": 0.291215,
+      "Material e acabamento ruins": 0.054152,
+      "Diferente do esperado ou do anunciado": 0.10349,
+      "Loja e atendimento": 0.139591,
+      "Desabafo sem motivo claro": 0.101083,
+      "Outros": 0.0
+    },
+    "Utilidades Domésticas": {
+      "reclamações": 758,
+      "Produto não recebido": 0.135884,
+      "Atraso e prazo de entrega": 0.044855,
+      "Defeito, avaria ou item errado": 0.118734,
+      "Desempenho ruim no uso": 0.283641,
+      "Material e acabamento ruins": 0.112137,
+      "Diferente do esperado ou do anunciado": 0.104222,
+      "Loja e atendimento": 0.101583,
+      "Desabafo sem motivo claro": 0.098945,
+      "Outros": 0.0
+    },
+    "Eletroportáteis": {
+      "reclamações": 680,
+      "Produto não recebido": 0.101471,
+      "Atraso e prazo de entrega": 0.036765,
+      "Defeito, avaria ou item errado": 0.125,
+      "Desempenho ruim no uso": 0.351471,
+      "Material e acabamento ruins": 0.063235,
+      "Diferente do esperado ou do anunciado": 0.092647,
+      "Loja e atendimento": 0.127941,
+      "Desabafo sem motivo claro": 0.101471,
+      "Outros": 0.0
+    },
+    "Casa e Construção": {
+      "reclamações": 608,
+      "Produto não recebido": 0.202303,
+      "Atraso e prazo de entrega": 0.046053,
+      "Defeito, avaria ou item errado": 0.105263,
+      "Desempenho ruim no uso": 0.284539,
+      "Material e acabamento ruins": 0.065789,
+      "Diferente do esperado ou do anunciado": 0.059211,
+      "Loja e atendimento": 0.138158,
+      "Desabafo sem motivo claro": 0.098684,
+      "Outros": 0.0
+    },
+    "TV e Home Theater": {
+      "reclamações": 565,
+      "Produto não recebido": 0.113274,
+      "Atraso e prazo de entrega": 0.049558,
+      "Defeito, avaria ou item errado": 0.109735,
+      "Desempenho ruim no uso": 0.39823,
+      "Material e acabamento ruins": 0.079646,
+      "Diferente do esperado ou do anunciado": 0.074336,
+      "Loja e atendimento": 0.109735,
+      "Desabafo sem motivo claro": 0.065487,
+      "Outros": 0.0
+    }
+  },
+  "motivos_por_mes": {
+    "2018-01": {
+      "reclamações": 7070,
+      "Produto não recebido": 0.164074,
+      "Atraso e prazo de entrega": 0.053182,
+      "Defeito, avaria ou item errado": 0.113154,
+      "Desempenho ruim no uso": 0.301132,
+      "Material e acabamento ruins": 0.08232,
+      "Diferente do esperado ou do anunciado": 0.067327,
+      "Loja e atendimento": 0.13819,
+      "Desabafo sem motivo claro": 0.080339,
+      "Outros": 0.000283
+    },
+    "2018-02": {
+      "reclamações": 2937,
+      "Produto não recebido": 0.087845,
+      "Atraso e prazo de entrega": 0.053796,
+      "Defeito, avaria ou item errado": 0.109976,
+      "Desempenho ruim no uso": 0.371808,
+      "Material e acabamento ruins": 0.082057,
+      "Diferente do esperado ou do anunciado": 0.075247,
+      "Loja e atendimento": 0.127,
+      "Desabafo sem motivo claro": 0.091931,
+      "Outros": 0.00034
+    },
+    "2018-03": {
+      "reclamações": 6918,
+      "Produto não recebido": 0.171726,
+      "Atraso e prazo de entrega": 0.062879,
+      "Defeito, avaria ou item errado": 0.111737,
+      "Desempenho ruim no uso": 0.282162,
+      "Material e acabamento ruins": 0.078057,
+      "Diferente do esperado ou do anunciado": 0.064903,
+      "Loja e atendimento": 0.144406,
+      "Desabafo sem motivo claro": 0.08355,
+      "Outros": 0.000578
+    },
+    "2018-04": {
+      "reclamações": 6710,
+      "Produto não recebido": 0.181222,
+      "Atraso e prazo de entrega": 0.067958,
+      "Defeito, avaria ou item errado": 0.109836,
+      "Desempenho ruim no uso": 0.266766,
+      "Material e acabamento ruins": 0.077943,
+      "Diferente do esperado ou do anunciado": 0.069896,
+      "Loja e atendimento": 0.14158,
+      "Desabafo sem motivo claro": 0.084799,
+      "Outros": 0.0
+    },
+    "2018-05": {
+      "reclamações": 6247,
+      "Produto não recebido": 0.142308,
+      "Atraso e prazo de entrega": 0.057308,
+      "Defeito, avaria ou item errado": 0.112374,
+      "Desempenho ruim no uso": 0.304466,
+      "Material e acabamento ruins": 0.077317,
+      "Diferente do esperado ou do anunciado": 0.069473,
+      "Loja e atendimento": 0.141668,
+      "Desabafo sem motivo claro": 0.094926,
+      "Outros": 0.00016
+    }
+  },
+  "amostra_da_representacao_densa": {
+    "avaliacoes": 20000,
+    "treino": 9000,
+    "teste": 5000,
+    "reclamacoes_para_agrupar": 8107,
+    "regularizacao": {
+      "TF-IDF de palavras": 3.0,
+      "LSA (200 dimensões)": 3.0,
+      "MiniLM multilíngue (384 dimensões)": 0.3
+    },
+    "termos_do_tfidf": 15683,
+    "minilm_disponivel": true,
+    "como_foi_gerado": {
+      "modelo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "segundos": 1198,
+      "pico_de_memoria_mb": 1083,
+      "download_mb": 241,
+      "threads": 2
+    }
+  },
+  "representacoes_na_amostra": {
+    "TF-IDF de palavras": {
+      "AUC": 0.953761,
+      "AUC inf": 0.946206,
+      "AUC sup": 0.960714,
+      "precisão lendo 10%": 0.938,
+      "precisão lendo 10% inf": 0.916,
+      "precisão lendo 10% sup": 0.95705,
+      "revocação lendo 10%": 0.331683,
+      "revocação lendo 10% inf": 0.316504,
+      "revocação lendo 10% sup": 0.346485,
+      "leitura para pegar 80%": 0.257,
+      "leitura para pegar 80% inf": 0.247,
+      "leitura para pegar 80% sup": 0.268
+    },
+    "LSA (200 dimensões)": {
+      "AUC": 0.951505,
+      "AUC inf": 0.943966,
+      "AUC sup": 0.958106,
+      "precisão lendo 10%": 0.956,
+      "precisão lendo 10% inf": 0.936,
+      "precisão lendo 10% sup": 0.972,
+      "revocação lendo 10%": 0.338048,
+      "revocação lendo 10% inf": 0.322613,
+      "revocação lendo 10% sup": 0.352858,
+      "leitura para pegar 80%": 0.264,
+      "leitura para pegar 80% inf": 0.254,
+      "leitura para pegar 80% sup": 0.274
+    },
+    "MiniLM multilíngue (384 dimensões)": {
+      "AUC": 0.945508,
+      "AUC inf": 0.937096,
+      "AUC sup": 0.952251,
+      "precisão lendo 10%": 0.932,
+      "precisão lendo 10% inf": 0.91,
+      "precisão lendo 10% sup": 0.954,
+      "revocação lendo 10%": 0.329562,
+      "revocação lendo 10% inf": 0.315822,
+      "revocação lendo 10% sup": 0.344031,
+      "leitura para pegar 80%": 0.268,
+      "leitura para pegar 80% inf": 0.258,
+      "leitura para pegar 80% sup": 0.281
+    },
+    "TF-IDF de palavras, treinado na base inteira": {
+      "AUC": 0.959277,
+      "AUC inf": 0.952268,
+      "AUC sup": 0.965562,
+      "precisão lendo 10%": 0.95,
+      "precisão lendo 10% inf": 0.93,
+      "precisão lendo 10% sup": 0.968,
+      "revocação lendo 10%": 0.335926,
+      "revocação lendo 10% inf": 0.321225,
+      "revocação lendo 10% sup": 0.351312,
+      "leitura para pegar 80%": 0.253,
+      "leitura para pegar 80% inf": 0.243,
+      "leitura para pegar 80% sup": 0.263
+    }
+  },
+  "representacoes_na_amostra_diferencas": {
+    "LSA (200 dimensões) − TF-IDF de palavras": {
+      "AUC": -0.002256,
+      "AUC inf": -0.00445,
+      "AUC sup": 4.1e-05,
+      "AUC empata": true,
+      "precisão lendo 10%": 0.018,
+      "precisão lendo 10% inf": 0.002,
+      "precisão lendo 10% sup": 0.034,
+      "precisão lendo 10% empata": false,
+      "revocação lendo 10%": 0.006365,
+      "revocação lendo 10% inf": 0.000706,
+      "revocação lendo 10% sup": 0.012321,
+      "revocação lendo 10% empata": false,
+      "leitura para pegar 80%": 0.007,
+      "leitura para pegar 80% inf": 0.002,
+      "leitura para pegar 80% sup": 0.01,
+      "leitura para pegar 80% empata": false
+    },
+    "MiniLM multilíngue (384 dimensões) − TF-IDF de palavras": {
+      "AUC": -0.008254,
+      "AUC inf": -0.012621,
+      "AUC sup": -0.004133,
+      "AUC empata": false,
+      "precisão lendo 10%": -0.006,
+      "precisão lendo 10% inf": -0.0261,
+      "precisão lendo 10% sup": 0.016,
+      "precisão lendo 10% empata": true,
+      "revocação lendo 10%": -0.002122,
+      "revocação lendo 10% inf": -0.009282,
+      "revocação lendo 10% sup": 0.005656,
+      "revocação lendo 10% empata": true,
+      "leitura para pegar 80%": 0.011,
+      "leitura para pegar 80% inf": 0.006,
+      "leitura para pegar 80% sup": 0.017,
+      "leitura para pegar 80% empata": false
+    },
+    "TF-IDF de palavras, treinado na base inteira − TF-IDF de palavras": {
+      "AUC": 0.005516,
+      "AUC inf": 0.003809,
+      "AUC sup": 0.00725,
+      "AUC empata": false,
+      "precisão lendo 10%": 0.012,
+      "precisão lendo 10% inf": 0.002,
+      "precisão lendo 10% sup": 0.026,
+      "precisão lendo 10% empata": false,
+      "revocação lendo 10%": 0.004243,
+      "revocação lendo 10% inf": 0.00069,
+      "revocação lendo 10% sup": 0.009438,
+      "revocação lendo 10% empata": false,
+      "leitura para pegar 80%": -0.004,
+      "leitura para pegar 80% inf": -0.008,
+      "leitura para pegar 80% sup": -0.001,
+      "leitura para pegar 80% empata": false
+    }
+  },
+  "agrupamentos_na_amostra": {
+    "reclamacoes": 8107,
+    "tabela": {
+      "NMF sobre TF-IDF": {
+        "estabilidade": 0.541278,
+        "mínimo": 0.388068,
+        "máximo": 0.716783,
+        "palavras em comum com o NMF": 1.0,
+        "mesmo motivo que o NMF": 1.0
+      },
+      "k-means sobre MiniLM": {
+        "estabilidade": 0.423841,
+        "mínimo": 0.276045,
+        "máximo": 0.68464,
+        "palavras em comum com o NMF": 0.193335,
+        "mesmo motivo que o NMF": 0.333909
+      },
+      "k-means sobre LSA": {
+        "estabilidade": 0.422481,
+        "mínimo": 0.360252,
+        "máximo": 0.474229,
+        "palavras em comum com o NMF": 0.368511,
+        "mesmo motivo que o NMF": 0.515234
+      }
+    }
+  },
+  "motivos_por_metodo_de_agrupamento": {
+    "Produto não recebido": {
+      "NMF sobre TF-IDF": 0.158012,
+      "k-means sobre MiniLM": 0.16825,
+      "k-means sobre LSA": 0.152214
+    },
+    "Atraso e prazo de entrega": {
+      "NMF sobre TF-IDF": 0.060072,
+      "k-means sobre MiniLM": 0.138646,
+      "k-means sobre LSA": 0.0
+    },
+    "Defeito, avaria ou item errado": {
+      "NMF sobre TF-IDF": 0.110275,
+      "k-means sobre MiniLM": 0.102011,
+      "k-means sobre LSA": 0.099297
+    },
+    "Desempenho ruim no uso": {
+      "NMF sobre TF-IDF": 0.331935,
+      "k-means sobre MiniLM": 0.151474,
+      "k-means sobre LSA": 0.1701
+    },
+    "Material e acabamento ruins": {
+      "NMF sobre TF-IDF": 0.0766,
+      "k-means sobre MiniLM": 0.125941,
+      "k-means sobre LSA": 0.067719
+    },
+    "Diferente do esperado ou do anunciado": {
+      "NMF sobre TF-IDF": 0.062539,
+      "k-means sobre MiniLM": 0.107931,
+      "k-means sobre LSA": 0.31664
+    },
+    "Loja e atendimento": {
+      "NMF sobre TF-IDF": 0.129764,
+      "k-means sobre MiniLM": 0.102627,
+      "k-means sobre LSA": 0.19403
+    },
+    "Desabafo sem motivo claro": {
+      "NMF sobre TF-IDF": 0.06994,
+      "k-means sobre MiniLM": 0.103121,
+      "k-means sobre LSA": 0.0
+    },
+    "Outros": {
+      "NMF sobre TF-IDF": 0.000863,
+      "k-means sobre MiniLM": 0.0,
+      "k-means sobre LSA": 0.0
+    }
+  },
+  "achados": {
+    "termos_no_lexico": 102,
+    "parcela_do_teste_com_termo_do_lexico": 0.33127648196141346,
+    "prevalencia_no_teste": 0.28252910444691265,
+    "teto_de_revocacao_lendo_10": 0.3539458357600466,
+    "piso_de_leitura_para_80": 0.22602328355753012,
+    "auc_do_modelo": 0.9625949248246781,
+    "auc_do_lexico": 0.8572865362503292,
+    "precisao_lendo_10_modelo": 0.9584516022872187,
+    "precisao_lendo_10_lexico": 0.890224932433402,
+    "leitura_para_80_modelo": 0.251,
+    "leitura_para_80_lexico": 0.328,
+    "auc_menor_entre_rotulos": 0.9625949248246781,
+    "auc_maior_entre_rotulos": 0.989025016908401,
+    "alarmes_falsos_lidos": 45,
+    "alarmes_falsos_que_eram_reclamacao": 41,
+    "estabilidade_dos_temas": 0.6172378523513714,
+    "estabilidade_menor_por_numero_de_temas": 0.5711263610257418,
+    "estabilidade_maior_por_numero_de_temas": 0.7037773189572725,
+    "motivos_no_modelo_de_referencia": 8,
+    "motivos_nomeados": 8,
+    "execucoes_do_reajuste": 10,
+    "motivos_em_todas_as_execucoes": 6,
+    "maior_motivo": "Desempenho ruim no uso",
+    "maior_motivo_parcela": 0.3044661437489995,
+    "motivo_mais_instavel": "Diferente do esperado ou do anunciado",
+    "motivo_mais_instavel_menor": 0.0,
+    "motivo_mais_instavel_maior": 0.1972186649591804,
+    "motivo_mais_instavel_referencia": 0.0694733472066592,
+    "categoria_mais_diferente": "Móveis",
+    "motivo_da_categoria_mais_diferente": "Desempenho ruim no uso",
+    "parcela_na_categoria": 0.15968586387434555,
+    "parcela_geral_do_motivo": 0.3044661437489995,
+    "representacao_densa_comparada": "MiniLM multilíngue (384 dimensões)",
+    "auc_da_densa_na_amostra": 0.9455076752197569,
+    "auc_do_tfidf_na_amostra": 0.9537613270529507,
+    "densa_empata_com_tfidf_em_auc": false
+  },
+  "para_o_site": {
+    "numero_chave": {
+      "pt": "AUC 0,96",
+      "en": "AUC 0.96",
+      "es": "AUC 0,96"
+    },
+    "pergunta": {
+      "pt": "Do que os clientes reclamam, e dá para confiar numa leitura automática das avaliações?",
+      "en": "What do customers complain about, and can an automated reading of their reviews be trusted?",
+      "es": "¿De qué se quejan los clientes y se puede confiar en una lectura automática de sus reseñas?"
+    },
+    "resultado": {
+      "pt": "Para o alerta de insatisfação, sim: um modelo simples (TF-IDF com regressão logística) separa reclamação de elogio com AUC de 0,96, e lendo só os 10% de avaliações de maior escore o time encontra 96% de reclamações (com uma lista de palavras negativas, 89%). Para a lista de motivos, só em parte: 6 dos 8 motivos reaparecem em todas as 10 execuções, mas o tamanho de cada um muda (“Diferente do esperado ou do anunciado” vai de 0% a 20% das reclamações quando os temas são reaprendidos com outra semente).",
+      "en": "For the dissatisfaction alert, yes: a simple model (TF-IDF with logistic regression) separates complaints from praise with an AUC of 0.96, and when the team reads only the top-scoring 10% of reviews, 96% of them are complaints (a hand-made list of negative words gets 89%). For the list of reasons, only partly: 6 of the 8 reasons come back in all 10 runs, but their sizes shift (“Not as expected or advertised” ranges from 0% to 20% of complaints when the topics are re-learned with a different random seed).",
+      "es": "Para la alerta de insatisfacción, sí: un modelo sencillo (TF-IDF con regresión logística) separa las quejas de los elogios con un AUC de 0,96, y al leer solo el 10 % de reseñas con mayor puntuación, el 96 % son quejas (con una lista de palabras negativas, el 89 %). Para la lista de motivos, solo en parte: 6 de los 8 motivos reaparecen en las 10 ejecuciones, pero su tamaño cambia (“Distinto de lo esperado o anunciado” va del 0 % al 20 % de las quejas cuando los temas se vuelven a aprender con otra semilla)."
+    },
+    "detalhe": {
+      "pt": "O gráfico mostra quanto das reclamações o time captura conforme a parcela das avaliações que consegue ler: para pegar 80% delas, o modelo pede a leitura de 25% das avaliações e o léxico, de 33%. A representação densa de um modelo de linguagem (MiniLM) não superou o TF-IDF na mesma amostra (AUC de 0,946 contra 0,954), e a nota de 1 a 5, quando existe, ainda é um alerta melhor que o texto (precisão de 91% contra 87% marcando o mesmo volume).",
+      "en": "The chart shows how many complaints the team catches as it reads a larger share of the reviews: to catch 80% of them, the model needs 25% of the reviews read and the word list needs 33%. Dense embeddings from a language model (MiniLM) did not beat TF-IDF on the same sample (AUC 0.946 versus 0.954), and the 1-to-5 star rating, when it exists, is still a better alert than the text (91% precision versus 87% flagging the same volume).",
+      "es": "El gráfico muestra cuántas quejas captura el equipo según la parte de las reseñas que logra leer: para detectar el 80 % de ellas, el modelo exige leer el 25 % de las reseñas y el léxico, el 33 %. La representación densa de un modelo de lenguaje (MiniLM) no superó al TF-IDF en la misma muestra (AUC de 0,946 frente a 0,954), y la nota de 1 a 5, cuando existe, sigue siendo mejor alerta que el texto (precisión del 91 % frente al 87 % marcando el mismo volumen)."
+    },
+    "dados": {
+      "pt": "B2W-Reviews01: 126 mil avaliações de produtos de um e-commerce brasileiro, de janeiro a maio de 2018 (treino até março, teste em maio).",
+      "en": "B2W-Reviews01: 126,000 product reviews in Portuguese from a Brazilian e-commerce site, January to May 2018 (trained through March, tested on May).",
+      "es": "B2W-Reviews01: 126 000 reseñas de productos de un comercio electrónico brasileño, de enero a mayo de 2018 (entrenamiento hasta marzo, prueba en mayo)."
+    },
+    "etiquetas": [
+      "NLP em português",
+      "TF-IDF",
+      "ruído de rótulo",
+      "NMF",
+      "estabilidade de temas",
+      "calibração"
+    ],
+    "grafico": {
+      "tipo": "linhas",
+      "titulo": {
+        "pt": "Para pegar 80% das reclamações, o modelo pede a leitura de 25% das avaliações; o léxico, de 33%",
+        "en": "To catch 80% of complaints, the model needs 25% of reviews read; the word list needs 33%",
+        "es": "Para detectar el 80 % de las quejas, el modelo exige leer el 25 % de las reseñas; el léxico, el 33 %"
+      },
+      "eixo_x": {
+        "pt": "Parcela das avaliações lidas",
+        "en": "Share of reviews read",
+        "es": "Parte de las reseñas leídas"
+      },
+      "eixo_y": {
+        "pt": "Parcela das reclamações capturadas",
+        "en": "Share of complaints caught",
+        "es": "Parte de las quejas detectadas"
+      },
+      "formato_x": "percentual",
+      "formato_y": "percentual",
+      "series": [
+        {
+          "nome": {
+            "pt": "Modelo de texto (TF-IDF + regressão logística)",
+            "en": "Text model (TF-IDF + logistic regression)",
+            "es": "Modelo de texto (TF-IDF + regresión logística)"
+          },
+          "papel": "principal",
+          "pontos": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.025,
+              0.0866
+            ],
+            [
+              0.05,
+              0.1711
+            ],
+            [
+              0.075,
+              0.2551
+            ],
+            [
+              0.1,
+              0.3392
+            ],
+            [
+              0.125,
+              0.422
+            ],
+            [
+              0.15,
+              0.5018
+            ],
+            [
+              0.175,
+              0.5815
+            ],
+            [
+              0.2,
+              0.6579
+            ],
+            [
+              0.225,
+              0.7314
+            ],
+            [
+              0.25,
+              0.7976
+            ],
+            [
+              0.275,
+              0.8582
+            ],
+            [
+              0.3,
+              0.8998
+            ],
+            [
+              0.325,
+              0.9273
+            ],
+            [
+              0.35,
+              0.9466
+            ],
+            [
+              0.375,
+              0.9572
+            ],
+            [
+              0.4,
+              0.9623
+            ],
+            [
+              0.425,
+              0.9663
+            ],
+            [
+              0.45,
+              0.9703
+            ],
+            [
+              0.475,
+              0.9735
+            ],
+            [
+              0.5,
+              0.9751
+            ],
+            [
+              0.525,
+              0.9779
+            ],
+            [
+              0.55,
+              0.9798
+            ],
+            [
+              0.575,
+              0.9812
+            ],
+            [
+              0.6,
+              0.9824
+            ],
+            [
+              0.625,
+              0.983
+            ],
+            [
+              0.65,
+              0.9844
+            ],
+            [
+              0.675,
+              0.9851
+            ],
+            [
+              0.7,
+              0.9863
+            ],
+            [
+              0.725,
+              0.987
+            ],
+            [
+              0.75,
+              0.9882
+            ],
+            [
+              0.775,
+              0.9897
+            ],
+            [
+              0.8,
+              0.9916
+            ],
+            [
+              0.825,
+              0.9926
+            ],
+            [
+              0.85,
+              0.9937
+            ],
+            [
+              0.875,
+              0.9948
+            ],
+            [
+              0.9,
+              0.9959
+            ],
+            [
+              0.925,
+              0.9965
+            ],
+            [
+              0.95,
+              0.9977
+            ],
+            [
+              0.975,
+              0.9994
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "nome": {
+            "pt": "Léxico de palavras negativas",
+            "en": "Hand-made list of negative words",
+            "es": "Léxico de palabras negativas"
+          },
+          "papel": "base",
+          "pontos": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.025,
+              0.0816
+            ],
+            [
+              0.05,
+              0.161
+            ],
+            [
+              0.075,
+              0.238
+            ],
+            [
+              0.1,
+              0.3151
+            ],
+            [
+              0.125,
+              0.3846
+            ],
+            [
+              0.15,
+              0.452
+            ],
+            [
+              0.175,
+              0.5195
+            ],
+            [
+              0.2,
+              0.5842
+            ],
+            [
+              0.225,
+              0.6265
+            ],
+            [
+              0.25,
+              0.6688
+            ],
+            [
+              0.275,
+              0.711
+            ],
+            [
+              0.3,
+              0.7533
+            ],
+            [
+              0.325,
+              0.7956
+            ],
+            [
+              0.35,
+              0.8116
+            ],
+            [
+              0.375,
+              0.8189
+            ],
+            [
+              0.4,
+              0.8261
+            ],
+            [
+              0.425,
+              0.8334
+            ],
+            [
+              0.45,
+              0.8406
+            ],
+            [
+              0.475,
+              0.8479
+            ],
+            [
+              0.5,
+              0.8551
+            ],
+            [
+              0.525,
+              0.8623
+            ],
+            [
+              0.55,
+              0.8696
+            ],
+            [
+              0.575,
+              0.8768
+            ],
+            [
+              0.6,
+              0.8841
+            ],
+            [
+              0.625,
+              0.8913
+            ],
+            [
+              0.65,
+              0.8986
+            ],
+            [
+              0.675,
+              0.9058
+            ],
+            [
+              0.7,
+              0.9131
+            ],
+            [
+              0.725,
+              0.9203
+            ],
+            [
+              0.75,
+              0.9275
+            ],
+            [
+              0.775,
+              0.9348
+            ],
+            [
+              0.8,
+              0.942
+            ],
+            [
+              0.825,
+              0.9493
+            ],
+            [
+              0.85,
+              0.9565
+            ],
+            [
+              0.875,
+              0.9638
+            ],
+            [
+              0.9,
+              0.971
+            ],
+            [
+              0.925,
+              0.9783
+            ],
+            [
+              0.95,
+              0.9855
+            ],
+            [
+              0.975,
+              0.9928
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "nome": {
+            "pt": "Ler ao acaso",
+            "en": "Reading at random",
+            "es": "Leer al azar"
+          },
+          "papel": "neutro",
+          "pontos": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.025,
+              0.025
+            ],
+            [
+              0.05,
+              0.05
+            ],
+            [
+              0.075,
+              0.075
+            ],
+            [
+              0.1,
+              0.1
+            ],
+            [
+              0.125,
+              0.125
+            ],
+            [
+              0.15,
+              0.15
+            ],
+            [
+              0.175,
+              0.175
+            ],
+            [
+              0.2,
+              0.2
+            ],
+            [
+              0.225,
+              0.225
+            ],
+            [
+              0.25,
+              0.25
+            ],
+            [
+              0.275,
+              0.275
+            ],
+            [
+              0.3,
+              0.3
+            ],
+            [
+              0.325,
+              0.325
+            ],
+            [
+              0.35,
+              0.35
+            ],
+            [
+              0.375,
+              0.375
+            ],
+            [
+              0.4,
+              0.4
+            ],
+            [
+              0.425,
+              0.425
+            ],
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.475,
+              0.475
+            ],
+            [
+              0.5,
+              0.5
+            ],
+            [
+              0.525,
+              0.525
+            ],
+            [
+              0.55,
+              0.55
+            ],
+            [
+              0.575,
+              0.575
+            ],
+            [
+              0.6,
+              0.6
+            ],
+            [
+              0.625,
+              0.625
+            ],
+            [
+              0.65,
+              0.65
+            ],
+            [
+              0.675,
+              0.675
+            ],
+            [
+              0.7,
+              0.7
+            ],
+            [
+              0.725,
+              0.725
+            ],
+            [
+              0.75,
+              0.75
+            ],
+            [
+              0.775,
+              0.775
+            ],
+            [
+              0.8,
+              0.8
+            ],
+            [
+              0.825,
+              0.825
+            ],
+            [
+              0.85,
+              0.85
+            ],
+            [
+              0.875,
+              0.875
+            ],
+            [
+              0.9,
+              0.9
+            ],
+            [
+              0.925,
+              0.925
+            ],
+            [
+              0.95,
+              0.95
+            ],
+            [
+              0.975,
+              0.975
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "faixa": {
+        "serie": 0,
+        "inferior": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.025,
+            0.0844
+          ],
+          [
+            0.05,
+            0.1671
+          ],
+          [
+            0.075,
+            0.2501
+          ],
+          [
+            0.1,
+            0.3321
+          ],
+          [
+            0.125,
+            0.4137
+          ],
+          [
+            0.15,
+            0.4912
+          ],
+          [
+            0.175,
+            0.5701
+          ],
+          [
+            0.2,
+            0.646
+          ],
+          [
+            0.225,
+            0.7188
+          ],
+          [
+            0.25,
+            0.7851
+          ],
+          [
+            0.275,
+            0.8465
+          ],
+          [
+            0.3,
+            0.8898
+          ],
+          [
+            0.325,
+            0.9199
+          ],
+          [
+            0.35,
+            0.9402
+          ],
+          [
+            0.375,
+            0.9522
+          ],
+          [
+            0.4,
+            0.9581
+          ],
+          [
+            0.425,
+            0.9621
+          ],
+          [
+            0.45,
+            0.9665
+          ],
+          [
+            0.475,
+            0.9696
+          ],
+          [
+            0.5,
+            0.9715
+          ],
+          [
+            0.525,
+            0.9744
+          ],
+          [
+            0.55,
+            0.9765
+          ],
+          [
+            0.575,
+            0.9781
+          ],
+          [
+            0.6,
+            0.9792
+          ],
+          [
+            0.625,
+            0.9799
+          ],
+          [
+            0.65,
+            0.9816
+          ],
+          [
+            0.675,
+            0.9826
+          ],
+          [
+            0.7,
+            0.9837
+          ],
+          [
+            0.725,
+            0.9845
+          ],
+          [
+            0.75,
+            0.9859
+          ],
+          [
+            0.775,
+            0.9874
+          ],
+          [
+            0.8,
+            0.9894
+          ],
+          [
+            0.825,
+            0.9906
+          ],
+          [
+            0.85,
+            0.9919
+          ],
+          [
+            0.875,
+            0.9931
+          ],
+          [
+            0.9,
+            0.9944
+          ],
+          [
+            0.925,
+            0.9952
+          ],
+          [
+            0.95,
+            0.9965
+          ],
+          [
+            0.975,
+            0.9988
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "superior": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.025,
+            0.0885
+          ],
+          [
+            0.05,
+            0.1748
+          ],
+          [
+            0.075,
+            0.2603
+          ],
+          [
+            0.1,
+            0.3456
+          ],
+          [
+            0.125,
+            0.4294
+          ],
+          [
+            0.15,
+            0.5112
+          ],
+          [
+            0.175,
+            0.5921
+          ],
+          [
+            0.2,
+            0.6687
+          ],
+          [
+            0.225,
+            0.742
+          ],
+          [
+            0.25,
+            0.8105
+          ],
+          [
+            0.275,
+            0.8681
+          ],
+          [
+            0.3,
+            0.9077
+          ],
+          [
+            0.325,
+            0.9337
+          ],
+          [
+            0.35,
+            0.9517
+          ],
+          [
+            0.375,
+            0.9618
+          ],
+          [
+            0.4,
+            0.967
+          ],
+          [
+            0.425,
+            0.9705
+          ],
+          [
+            0.45,
+            0.9744
+          ],
+          [
+            0.475,
+            0.9769
+          ],
+          [
+            0.5,
+            0.9788
+          ],
+          [
+            0.525,
+            0.9811
+          ],
+          [
+            0.55,
+            0.9829
+          ],
+          [
+            0.575,
+            0.9846
+          ],
+          [
+            0.6,
+            0.9853
+          ],
+          [
+            0.625,
+            0.9859
+          ],
+          [
+            0.65,
+            0.9872
+          ],
+          [
+            0.675,
+            0.9878
+          ],
+          [
+            0.7,
+            0.9889
+          ],
+          [
+            0.725,
+            0.9895
+          ],
+          [
+            0.75,
+            0.9907
+          ],
+          [
+            0.775,
+            0.9919
+          ],
+          [
+            0.8,
+            0.9934
+          ],
+          [
+            0.825,
+            0.9944
+          ],
+          [
+            0.85,
+            0.9955
+          ],
+          [
+            0.875,
+            0.9963
+          ],
+          [
+            0.9,
+            0.9973
+          ],
+          [
+            0.925,
+            0.9979
+          ],
+          [
+            0.95,
+            0.9987
+          ],
+          [
+            0.975,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  },
+  "tempos_em_segundos": {
+    "base e rótulos": 0.6,
+    "TF-IDF de palavras": 11.2,
+    "TF-IDF de caracteres": 27.0,
+    "regressões logísticas": 30.8,
+    "desempenho do alerta com bootstrap": 15.6,
+    "ruído de rótulo": 15.4,
+    "calibração e análise de erro": 7.4,
+    "estabilidade por número de temas": 16.3,
+    "temas de referência e tamanho dos motivos": 16.3,
+    "classificadores na amostra (esparso x denso)": 10.4,
+    "agrupamentos na amostra (NMF x k-means)": 5.0,
+    "total": 165
+  }
+}

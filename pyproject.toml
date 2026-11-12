@@ -1,0 +1,37 @@
+[project]
+name = "nlp-avaliacoes"
+version = "0.1.0"
+description = "Do que os clientes reclamam, e dá para confiar numa leitura automática das avaliações? Classificação de insatisfação, ruído de rótulo e estabilidade de temas em português"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.9",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "scipy>=1.14",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29",
+    "jinja2>=3.1",
+    "nbconvert>=7.16",
+    "nbformat>=5.10",
+    "pytest>=8.3",
+]
+# Só para scripts/gerar_embeddings.py (roda uma vez; a análise usa o arquivo guardado).
+embeddings = [
+    "fastembed>=0.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nlp_avaliacoes"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
